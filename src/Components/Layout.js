@@ -24,7 +24,7 @@ const HomepageHeading = ({ mobile }) => (
     <Container text>
         <Header
             as='h1'
-            content='Imagine-a-Company'
+            content='eatSentialSmart'
             inverted
             style={{
                 fontSize: mobile ? '2em' : '4em',
@@ -81,9 +81,9 @@ class DesktopContainer extends Component {
                         >
                             <Container>
                                 <Menu.Item as='a' active>Home</Menu.Item>
-                                <Menu.Item as='a'>Work</Menu.Item>
-                                <Menu.Item as='a'>Company</Menu.Item>
-                                <Menu.Item as='a'>Careers</Menu.Item>
+                                <Menu.Item as='a'>Articles</Menu.Item>
+                                <Menu.Item as='a'>Videos</Menu.Item>
+                                <Menu.Item as='a'>About</Menu.Item>
                                 <Menu.Item position='right'>
                                     <Button as='a' inverted={!fixed}>Log in</Button>
                                     <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }}>Sign Up</Button>
@@ -118,9 +118,9 @@ class MobileContainer extends Component {
                 <Sidebar.Pushable>
                     <Sidebar as={Menu} animation='uncover' inverted vertical visible={sidebarOpened}>
                         <Menu.Item as='a' active>Home</Menu.Item>
-                        <Menu.Item as='a'>Work</Menu.Item>
-                        <Menu.Item as='a'>Company</Menu.Item>
-                        <Menu.Item as='a'>Careers</Menu.Item>
+                        <Menu.Item as='a'>Articles</Menu.Item>
+                        <Menu.Item as='a'>Videos</Menu.Item>
+                        <Menu.Item as='a'>About</Menu.Item>
                         <Menu.Item as='a'>Log in</Menu.Item>
                         <Menu.Item as='a' primary>Sign Up</Menu.Item>
                     </Sidebar>
