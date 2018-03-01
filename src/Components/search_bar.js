@@ -11,6 +11,12 @@ class SearchBar extends Component {
         this.setState({ term: event.target.value });
         
     }
+
+    handleSubmit = (event) => {
+        this.props.onSearchTermChange(this.state.term);
+        this.setState({ term: ''});
+    }
+    
     render() {
         return (
             <Input
@@ -21,6 +27,7 @@ class SearchBar extends Component {
                 action>
                 <input />
                 <Button
+                    onClick={e => this.handleSubmit(e)}
                     type='submit'
                     animated>
                     <Button.Content visible>Search</Button.Content>
