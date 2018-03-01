@@ -27,10 +27,10 @@ const HomepageHeading = ({ mobile }) => (
             content='eatSentialSmart'
 
             style={{
-                fontSize: mobile ? '2em' : '4em',
+                fontSize: mobile ? '2.4em' : '4em',
                 fontWeight: 'normal',
                 marginBottom: 0,
-                marginTop: mobile ? '0.5em' : '1em',
+                marginTop: mobile ? '2.1em' : '1em',
             }}
         />
         <Header
@@ -40,10 +40,11 @@ const HomepageHeading = ({ mobile }) => (
             style={{
                 fontSize: mobile ? '1.5em' : '1.7em',
                 fontWeight: 'normal',
-                marginTop: mobile ? '0.5em' : '0.5em',
+                marginBottom: 0,
+                marginTop: mobile ? '0.5em' : '1em',
             }}
         />
-        <Button animated inverted color="orange" size="huge">
+        <Button animated color="orange" size="huge" style={{ marginTop: '0.5em' }}>
             <Button.Content visible>Get Started</Button.Content>
             <Button.Content hidden>
                 <Icon name='right arrow' />
@@ -80,7 +81,7 @@ class DesktopContainer extends Component {
                             fixed={fixed ? 'top' : null}
                             pointing={!fixed}
                             secondary={!fixed}
-                            size='large'
+                            size='massive'
                             color="orange"
                         >
                             <Container>
@@ -89,8 +90,8 @@ class DesktopContainer extends Component {
                                 <Menu.Item name='videos' active={activeItem === 'videos'} onClick={this.handleItemClick} as='a'>Videos</Menu.Item>
                                 <Menu.Item inverted name='about' active={activeItem === 'about'} onClick={this.handleItemClick} as='a'>About</Menu.Item>
                                 <Menu.Item position='right'>
-                                    <Button inverted color="orange" as='a'>Log in</Button>
-                                    <Button inverted color="orange" as='a' primary={fixed} style={{ marginLeft: '0.5em' }}>Sign Up</Button>
+                                    <Button color="orange" as='a'>Log in</Button>
+                                    <Button color="orange" as='a' style={{ marginLeft: '0.5em' }}>Sign Up</Button>
                                 </Menu.Item>
                             </Container>
                         </Menu>
@@ -120,7 +121,7 @@ class MobileContainer extends Component {
         return (
             <Responsive {...Responsive.onlyMobile}>
                 <Sidebar.Pushable>
-                    <Sidebar as={Menu} animation='uncover' inverted color="green" vertical visible={sidebarOpened}>
+                    <Sidebar as={Menu} animation='uncover' color="orange" vertical visible={sidebarOpened}>
                         <Menu.Item as='a' active>Home</Menu.Item>
                         <Menu.Item as='a'>Articles</Menu.Item>
                         <Menu.Item as='a'>Videos</Menu.Item>
@@ -130,15 +131,15 @@ class MobileContainer extends Component {
                     </Sidebar>
 
                     <Sidebar.Pusher dimmed={sidebarOpened} onClick={this.handleToggle} style={{ minHeight: '100vh' }}>
-                        <Segment inverted color="green" textAlign='center' style={{ minHeight: 350, padding: '1em 0em' }} vertical>
+                        <Segment inverted color="green" textAlign='center' style={{ minHeight: 400, padding: '1em 0em' }} vertical>
                             <Container>
                                 <Menu pointing secondary size='large'>
                                     <Menu.Item onClick={this.handleToggle}>
                                         <Icon name='sidebar' />
                                     </Menu.Item>
                                     <Menu.Item position='right'>
-                                        <Button inverted color="orange" as='a'>Log in</Button>
-                                        <Button inverted color="orange" as='a' style={{ marginLeft: '0.5em' }}>Sign Up</Button>
+                                        <Button color="orange" as='a'>Log in</Button>
+                                        <Button color="orange" as='a' style={{ marginLeft: '0.5em' }}>Sign Up</Button>
                                     </Menu.Item>
                                 </Menu>
                             </Container>
