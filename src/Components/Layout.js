@@ -25,27 +25,29 @@ const HomepageHeading = ({ mobile }) => (
         <Header
             as='h1'
             content='eatSentialSmart'
-            inverted
+
             style={{
                 fontSize: mobile ? '2em' : '4em',
                 fontWeight: 'normal',
                 marginBottom: 0,
-                marginTop: mobile ? '1.5em' : '3em',
+                marginTop: mobile ? '0.5em' : '1em',
             }}
         />
         <Header
             as='h2'
-            content='Do whatever you want when you want to.'
-            inverted
+            content='A smarter way to eat'
+
             style={{
                 fontSize: mobile ? '1.5em' : '1.7em',
                 fontWeight: 'normal',
-                marginTop: mobile ? '0.5em' : '1.5em',
+                marginTop: mobile ? '0.5em' : '0.5em',
             }}
         />
-        <Button primary size='huge'>
-            Get Started
-      <Icon name='right arrow' />
+        <Button animated inverted color="orange" size="huge">
+            <Button.Content visible>Get Started</Button.Content>
+            <Button.Content hidden>
+                <Icon name='right arrow' />
+            </Button.Content>
         </Button>
     </Container>
 )
@@ -59,34 +61,36 @@ HomepageHeading.propTypes = {
  * It can be more complicated, but you can create really flexible markup.
  */
 class DesktopContainer extends Component {
-    state = {}
+    state = { activeItem: 'home' }
 
     hideFixedMenu = () => this.setState({ fixed: false })
     showFixedMenu = () => this.setState({ fixed: true })
+    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
     render() {
         const { children } = this.props
         const { fixed } = this.state
+        const { activeItem } = this.state
 
         return (
             <Responsive {...Responsive.onlyComputer}>
                 <Visibility once={false} onBottomPassed={this.showFixedMenu} onBottomPassedReverse={this.hideFixedMenu}>
-                    <Segment inverted textAlign='center' style={{ minHeight: 700, padding: '1em 0em' }} vertical>
+                    <Segment inverted color="green" textAlign='center' style={{ minHeight: 400, padding: '1em 0em' }} vertical>
                         <Menu
                             fixed={fixed ? 'top' : null}
-                            inverted={!fixed}
                             pointing={!fixed}
                             secondary={!fixed}
                             size='large'
+                            color="orange"
                         >
                             <Container>
-                                <Menu.Item as='a' active>Home</Menu.Item>
-                                <Menu.Item as='a'>Articles</Menu.Item>
-                                <Menu.Item as='a'>Videos</Menu.Item>
-                                <Menu.Item as='a'>About</Menu.Item>
+                                <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} as='a'>Home</Menu.Item>
+                                <Menu.Item name='articles' active={activeItem === 'articles'} onClick={this.handleItemClick} as='a'>Articles</Menu.Item>
+                                <Menu.Item name='videos' active={activeItem === 'videos'} onClick={this.handleItemClick} as='a'>Videos</Menu.Item>
+                                <Menu.Item inverted name='about' active={activeItem === 'about'} onClick={this.handleItemClick} as='a'>About</Menu.Item>
                                 <Menu.Item position='right'>
-                                    <Button as='a' inverted={!fixed}>Log in</Button>
-                                    <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }}>Sign Up</Button>
+                                    <Button inverted color="orange" as='a'>Log in</Button>
+                                    <Button inverted color="orange" as='a' primary={fixed} style={{ marginLeft: '0.5em' }}>Sign Up</Button>
                                 </Menu.Item>
                             </Container>
                         </Menu>
@@ -116,7 +120,7 @@ class MobileContainer extends Component {
         return (
             <Responsive {...Responsive.onlyMobile}>
                 <Sidebar.Pushable>
-                    <Sidebar as={Menu} animation='uncover' inverted vertical visible={sidebarOpened}>
+                    <Sidebar as={Menu} animation='uncover' inverted color="green" vertical visible={sidebarOpened}>
                         <Menu.Item as='a' active>Home</Menu.Item>
                         <Menu.Item as='a'>Articles</Menu.Item>
                         <Menu.Item as='a'>Videos</Menu.Item>
@@ -126,15 +130,15 @@ class MobileContainer extends Component {
                     </Sidebar>
 
                     <Sidebar.Pusher dimmed={sidebarOpened} onClick={this.handleToggle} style={{ minHeight: '100vh' }}>
-                        <Segment inverted textAlign='center' style={{ minHeight: 350, padding: '1em 0em' }} vertical>
+                        <Segment inverted color="green" textAlign='center' style={{ minHeight: 350, padding: '1em 0em' }} vertical>
                             <Container>
-                                <Menu inverted pointing secondary size='large'>
+                                <Menu pointing secondary size='large'>
                                     <Menu.Item onClick={this.handleToggle}>
                                         <Icon name='sidebar' />
                                     </Menu.Item>
                                     <Menu.Item position='right'>
-                                        <Button as='a' inverted>Log in</Button>
-                                        <Button as='a' inverted style={{ marginLeft: '0.5em' }}>Sign Up</Button>
+                                        <Button inverted color="orange" as='a'>Log in</Button>
+                                        <Button inverted color="orange" as='a' style={{ marginLeft: '0.5em' }}>Sign Up</Button>
                                     </Menu.Item>
                                 </Menu>
                             </Container>
@@ -239,7 +243,7 @@ const HomepageLayout = () => (
                 <Button as='a' size='large'>I'm Still Quite Interested</Button>
             </Container>
         </Segment>
-        <Segment inverted vertical style={{ padding: '5em 0em' }}>
+        <Segment inverted color="orange" vertical style={{ padding: '2em 0em' }}>
             <Container>
                 <Grid divided inverted stackable>
                     <Grid.Row>
@@ -247,23 +251,16 @@ const HomepageLayout = () => (
                             <Header inverted as='h4' content='About' />
                             <List link inverted>
                                 <List.Item as='a'>Sitemap</List.Item>
-                                <List.Item as='a'>Contact Us</List.Item>
-                                <List.Item as='a'>Religious Ceremonies</List.Item>
-                                <List.Item as='a'>Gazebo Plans</List.Item>
                             </List>
                         </Grid.Column>
                         <Grid.Column width={3}>
                             <Header inverted as='h4' content='Services' />
                             <List link inverted>
                                 <List.Item as='a'>Banana Pre-Order</List.Item>
-                                <List.Item as='a'>DNA FAQ</List.Item>
-                                <List.Item as='a'>How To Access</List.Item>
-                                <List.Item as='a'>Favorite X-Men</List.Item>
                             </List>
                         </Grid.Column>
                         <Grid.Column width={7}>
-                            <Header as='h4' inverted>Footer Header</Header>
-                            <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+                            <Header as='h4' inverted>© 2017 eatSentialSmart</Header>
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
