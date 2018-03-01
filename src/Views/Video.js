@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import SearchBar from '../Components/search_bar';
 import YTSearch from 'youtube-api-search';
-
+import VideoDetail from '../Components/video_detail';
+import { Container, Segment } from 'semantic-ui-react'; 
 
 const API_KEY = 'AIzaSyBlsDKSEnADH6MFN6rhFZQNfJuN-ceK99k';
 
@@ -28,7 +29,14 @@ class Video extends Component {
     }
     render() {
         return (
-            <SearchBar  onSearchTermChange={term => this.videoSearch(term)} />
+            <div>
+                <SearchBar  onSearchTermChange={term => this.videoSearch(term)} />
+                <Container>
+                    <Segment>
+                        <VideoDetail video={this.state.selectedVideo}/>
+                    </Segment>
+                </Container>
+            </div>
         )
     }
 }
