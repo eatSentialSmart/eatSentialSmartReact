@@ -3,6 +3,7 @@ import SearchBar from '../Components/search_bar';
 import YTSearch from 'youtube-api-search';
 import VideoDetail from '../Components/video_detail';
 import { Container, Segment } from 'semantic-ui-react'; 
+import VideoList from '../Components/video_list';
 
 const API_KEY = 'AIzaSyBlsDKSEnADH6MFN6rhFZQNfJuN-ceK99k';
 
@@ -15,7 +16,7 @@ class Video extends Component {
             selectedVideo: null
         };
 
-        //this.videoSearch('poke');
+        this.videoSearch('gluten free');
     }
 
     videoSearch(term) {
@@ -34,6 +35,11 @@ class Video extends Component {
                 <Container>
                     <Segment>
                         <VideoDetail video={this.state.selectedVideo}/>
+                    </Segment>
+                    <Segment>
+                        <VideoList 
+                            onVideoSelect={selectedVideo => this.setState({selectedVideo})}
+                            videos={this.state.videos} />
                     </Segment>
                 </Container>
             </div>
