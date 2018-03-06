@@ -15,6 +15,7 @@ import {
     Sidebar,
     Visibility,
 } from 'semantic-ui-react'
+import { Link } from 'react-router-dom';
 
 /* eslint-disable react/no-multi-comp */
 /* Heads up! HomepageHeading uses inline styling, however it's not the best practice. Use CSS or styled components for
@@ -87,7 +88,11 @@ class DesktopContainer extends Component {
                             <Container>
                                 <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} as='a'>Home</Menu.Item>
                                 <Menu.Item name='articles' active={activeItem === 'articles'} onClick={this.handleItemClick} as='a'>Articles</Menu.Item>
-                                <Menu.Item name='videos' active={activeItem === 'videos'} onClick={this.handleItemClick} as='a'>Videos</Menu.Item>
+                                <Menu.Item name='videos' active={activeItem === 'videos'} onClick={this.handleItemClick} as='a'>
+                                    <Link to='/videos'>
+                                        Videos
+                                    </Link>
+                                </Menu.Item>
                                 <Menu.Item inverted name='about' active={activeItem === 'about'} onClick={this.handleItemClick} as='a'>About</Menu.Item>
                                 <Menu.Item position='right'>
                                     <Button color="orange" as='a'>Log in</Button>
