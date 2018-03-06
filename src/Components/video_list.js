@@ -1,27 +1,25 @@
 import React from 'react';
-import { List } from 'semantic-ui-react';
-import VideoListItem from './video_list';
+import { Card } from 'semantic-ui-react';
+import VideoListItem from './video_list_item';
 
 const VideoList = (props) => {
-    console.log(props.videos);
-    
-    // const videoItems = props.videos.map(video => {
-    //     return <VideoListItem
-    //                 onVideoSelect={props.onVideoSelect} 
-    //                 key={video.etag} 
-    //                 video={video} />
-    // });
- 
+        //console.log(props.videos);
+        const videoItems = props.videos.map((video) => {
+            return <VideoListItem
+                        onVideoSelect={props.onVideoSelect} 
+                        key={video.etag} 
+                        video={video} />
+        });
+   
     return(
         <div>
-            <List 
-                selection 
-                verticalAlign='middle'>           
-                            
-            </List>
+            <Card.Group itemsPerRow={5}>
+                {videoItems.length!==0 && videoItems} 
+            </Card.Group>
         </div>
     )
     
-}
-
+        
+    }
+ 
 export default VideoList;
