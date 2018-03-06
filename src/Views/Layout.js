@@ -251,8 +251,8 @@ const HomepageLayout = () => (
                         <Grid.Column width={5}>
                             <Header inverted as='h3' content='Contributors' />
                             <List size="large" link inverted>
-                                <List.Item as='a'><a href='https://www.linkedin.com/in/hfakhreddine86/' target='_blank' rel="noopener noreferrer">
-                                    <Icon name='linkedin square'>
+                                <List.Item as='a'><a href='https://www.linkedin.com/in/hussein-fakhreddine/' target='_blank' rel="noopener noreferrer">
+                                    <Icon inverted name='linkedin square'>
                                     </Icon>Hussein Fakhreddine</a></List.Item>
                                 <List.Item as='a'><a href='https://www.linkedin.com/in/ren-jing-2372b81b/' target='_blank' rel="noopener noreferrer">
                                     <Icon name='linkedin square'>
@@ -262,7 +262,7 @@ const HomepageLayout = () => (
                         <Grid.Column width={5}>
                             <Header inverted as='h3' content='Contact' />
                             <List size="large" link inverted>
-                                <List.Item as='a'><a href='https://github.com/eatSentialSmart' target='_blank' rel="noopener noreferrer">
+                                <List.Item as='a'><a href='https://github.com/eatSentialSmart/eatSentialSmartReact' target='_blank' rel="noopener noreferrer">
                                     <Icon name='github square'>
                                     </Icon>GitHub</a></List.Item>
                             </List>
