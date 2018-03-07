@@ -4,7 +4,7 @@ import Layout from './Views/Layout';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Video from './Views/Video';
 import Home from './Views/Home';
-
+import Footer from './Components/footer';
 
 class App extends Component {
   render() {
@@ -17,7 +17,7 @@ class App extends Component {
             <Route exact path="/videos" component={Video} />
             <Route path="/" component={Home} />
           </Switch>
-          
+          <Footer />
         </div>
       </Router>
     );

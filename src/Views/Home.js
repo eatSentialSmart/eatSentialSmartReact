@@ -8,12 +8,7 @@ import {
     Header,
     Icon,
     Image,
-    List,
-    Menu,
-    Responsive,
-    Segment,
-    Sidebar,
-    Visibility,
+    Segment
 } from 'semantic-ui-react';
 
 const HomepageHeading = ({ mobile }) => (
@@ -120,7 +115,7 @@ export default class Home extends Component {
                     horizontal
                     style={{ margin: '3em 0em', textTransform: 'uppercase' }}
                 >
-                    <a href='#'>Case Studies</a>
+                    
                 </Divider>
                 <Header as='h3' style={{ fontSize: '2em' }}>Did We Tell You About Our Bananas?</Header>
                 <p style={{ fontSize: '1.33em' }}>
