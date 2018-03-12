@@ -31,7 +31,9 @@ class Video extends Component {
     render() {
         return (
             <div>
+                <Segment>
                 <SearchBar  onSearchTermChange={term => this.videoSearch(term)} />
+                </Segment>
                 <Container>
                     <Segment>
                         <VideoDetail video={this.state.selectedVideo}/>

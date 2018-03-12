@@ -1,12 +1,11 @@
 import React from 'react';
 import { Card, Image } from 'semantic-ui-react';
-//import Image from 'semantic-ui-react/dist/commonjs/elements/Image/Image';
-
 
 const VideoListItem = ({video, onVideoSelect}) => {
     const imageUrl = video.snippet.thumbnails.medium.url;
     
     return (
+    
         <Card onClick={() => onVideoSelect(video)}>
         <Image src={imageUrl} />
         <Card.Content>
@@ -14,8 +13,8 @@ const VideoListItem = ({video, onVideoSelect}) => {
           {video.snippet.title}
           </Card.Description>
         </Card.Content>
-        
       </Card>
+    
     )
 }
 
