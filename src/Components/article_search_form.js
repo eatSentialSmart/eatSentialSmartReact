@@ -12,19 +12,18 @@ class ASForm extends Component {
     render() {
         return (
             <div>
-                <Segment raised>
+                <Segment attached>
                     <Form>
                         <Form.Input fluid label='Search for Article' placeholder='foodie' />
                         <Form.Group widths='equal'>
                             <Form.Input fluid label='Start Year' placeholder='2010' />
                             <Form.Input fluid label='End Year' placeholder='2018' />                           
                         </Form.Group>   
-                            <Form.Select fluid label='Number of Article' options={options} placeholder='Gender' />     
+                            <Form.Select fluid label='Number of Article' options={options} placeholder='1' />     
                         <Form.Group widths='equal'>
                             <Form.Button>Submit</Form.Button>       
                             <Form.Button>Clear</Form.Button>                
-                        </Form.Group>                 
-                        
+                        </Form.Group>                                         
                     </Form>
                 </Segment>
             </div>

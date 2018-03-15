@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 import { Container } from 'semantic-ui-react';
 import axios from 'axios';
 import ASForm from '../Components/article_search_form';
+import Results from '../Components/result_segment';
 
 const API_KEY = 'b9f91d369ff59547cd47b931d8cbc56b:0:74623931';
 const queryURL = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${API_KEY}&q=`;
+
+const styles = {
+    marginTop: 40 
+}
 
 class Article extends Component {
     constructor(props) {
@@ -29,7 +34,12 @@ class Article extends Component {
         return(
             <div>
                 <Container>
-                    <ASForm />
+                    <div style={styles}>
+                        <ASForm />
+                    </div>
+                    <div style={styles}>
+                        <Results title='Article Results'/>
+                    </div>
                 </Container>
             </div>
         )
