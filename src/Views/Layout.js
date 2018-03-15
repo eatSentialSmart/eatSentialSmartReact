@@ -49,11 +49,15 @@ class DesktopContainer extends Component {
                         >
                             <Container>
                                 <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} as='a'>
-                                <Link to='/'>
+                                    <Link to='/'>
                                         Home
                                     </Link>
+                                </Menu.Item>                             
+                                <Menu.Item name='articles' active={activeItem === 'articles'} onClick={this.handleItemClick} as='a'>
+                                    <Link to='/articles'>
+                                        Articles
+                                    </Link>
                                 </Menu.Item>
-                                <Menu.Item name='articles' active={activeItem === 'articles'} onClick={this.handleItemClick} as='a'>Articles</Menu.Item>
 
                                 <Menu.Item name='videos' active={activeItem === 'videos'} onClick={this.handleItemClick} as='a'>
                                     <Link to='/videos'>
