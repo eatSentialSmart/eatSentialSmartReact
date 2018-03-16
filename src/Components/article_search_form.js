@@ -13,7 +13,12 @@ class ASForm extends Component {
         super(props);
 
         this.state = {
-            terms: {}
+            terms: {
+                foodie: '',
+                startYear: '',
+                endYear: '',
+                selected: ''
+            }
         }
 
     }
@@ -41,6 +46,14 @@ class ASForm extends Component {
 
       handleSubmit = () => {
         this.props.onSearchTermChange(this.state.terms);
+        this.setState({
+            terms: {
+                foodie: '',
+                startYear: '',
+                endYear: '',
+                selected: ''
+            }
+        })
     }
 
     render() {
@@ -77,12 +90,9 @@ class ASForm extends Component {
                         <Form.Group widths='equal'>
                             <Form.Button
                                 onClick={e => this.handleSubmit(e)}>
-                                Submit
+                                Search
                             </Form.Button>       
-                            <Form.Button
-                                onClick={this.handleClear}>
-                                Clear
-                            </Form.Button>                
+                                      
                         </Form.Group>                                         
                     </Form>
                 </Segment>

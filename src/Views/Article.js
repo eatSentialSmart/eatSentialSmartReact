@@ -37,20 +37,6 @@ class Article extends Component {
         this.searchForArticle(terms);
     }
 
-    // componentDidMount() {
-    //     const {name, startYear, endYear} = this.state;
-    //     console.log(name);
-    //     if(name){
-    //         axios({
-    //             method: 'get',
-    //             url: `${queryURL}${name}&begin_date=${startYear}&end_date=${endYear}`
-    //         }).then( res=> {
-    //             console.log(res);
-    //         })
-    //     }
-       
-    // }
-
     searchForArticle(terms) {
             let start = parseInt(terms.startYear);
             let end = parseInt(terms.endYear);
@@ -67,16 +53,6 @@ class Article extends Component {
     }
 
     render() {
-        const searchResults = this.state.articles.map( article => {
-            return(
-                <Results 
-                    sectionName='Article Results'
-                    title={article.headline.main}
-                    author={article.byline.original}
-                    date={article.pub_date}
-                    url={article.web_url} />
-            )
-        })
         return(
             <div>
                 <Container>
@@ -84,7 +60,9 @@ class Article extends Component {
                         <ASForm onSearchTermChange={terms => this.handleChange(terms)} />
                     </div>
                     <div style={styles}>
-                        {searchResults}
+                        <Results 
+                            sectionName='Article Results'
+                            articles={this.state.articles} />
                     </div>
                 </Container>
             </div>
