@@ -17,17 +17,39 @@ class Article extends Component {
 
         this.state = {
             articles: [],
-            searchTerm: {}       
+            name: '',
+            startYear: '',
+            endYear: '',
+            numberOfArticles: 1      
         }
     }
 
-    componentDidMount() {
-        axios({
-            method: 'get',
-            url: `${queryURL}pizza`
-        }).then( res=> {
-            console.log(res);
+    handleChange = (terms) => {
+        console.log(terms);
+
+        this.setState({
+            name: terms.foodie,
+            startYear: terms.startYear,
+            endYear: terms.endYear,
+            numberOfArticles: terms.selected  
         })
+        
+        this.searchForArticle(terms);
+    }
+
+    searchForArticle(terms) {
+            let start = parseInt(terms.startYear);
+            let end = parseInt(terms.endYear);
+            axios({
+                method: 'get',
+                url: `${queryURL}${terms.foodie}&begin_date=${start}0101&end_date=${end}0101`
+            }).then( res=> {
+                console.log(res.data);
+                this.setState({
+                    articles: res.data.response.docs
+                })
+            })
+     
     }
 
     render() {
@@ -35,10 +57,12 @@ class Article extends Component {
             <div>
                 <Container>
                     <div style={styles}>
-                        <ASForm />
+                        <ASForm onSearchTermChange={terms => this.handleChange(terms)} />
                     </div>
                     <div style={styles}>
-                        <Results title='Article Results'/>
+                        <Results 
+                            sectionName='Article Results'
+                            articles={this.state.articles} />
                     </div>
                 </Container>
             </div>
