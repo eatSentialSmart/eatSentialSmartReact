@@ -1,149 +1,221 @@
-import PropTypes from 'prop-types'
+import _ from 'lodash'
 import React, { Component } from 'react'
 import {
-    Button,
-    Container,
-    Icon,
-    Menu,
-    Responsive,
-    Segment,
-    Sidebar,
-    Visibility,
+    Container, Dropdown, Header, Icon, Image, Menu, Visibility,
 } from 'semantic-ui-react'
 
-import { Link } from 'react-router-dom';
+const menuStyle = {
+    border: 'none',
+    borderRadius: 0,
+    boxShadow: 'none',
+    marginBottom: '1em',
+    marginTop: '4em',
+    transition: 'box-shadow 0.5s ease, padding 0.5s ease',
+}
 
+const fixedMenuStyle = {
+    backgroundColor: '#fff',
+    border: '1px solid #ddd',
+    boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.2)',
+}
 
-/* eslint-disable react/no-multi-comp */
-/* Heads up! HomepageHeading uses inline styling, however it's not the best practice. Use CSS or styled components for
- * such things.
- */
+const overlayStyle = {
+    float: 'left',
+    margin: '0em 3em 1em 0em',
+}
 
+const fixedOverlayStyle = {
+    ...overlayStyle,
+    position: 'fixed',
+    top: '80px',
+    zIndex: 10,
+}
 
-/* Heads up!
- * Neither Semantic UI nor Semantic UI React offer a responsive navbar, however, it can be implemented easily.
- * It can be more complicated, but you can create really flexible markup.
- */
-class DesktopContainer extends Component {
-    state = { activeItem: 'home' }
+const overlayMenuStyle = {
+    position: 'relative',
+    left: 0,
+    transition: 'left 0.5s ease',
+}
 
-    hideFixedMenu = () => this.setState({ fixed: false })
-    showFixedMenu = () => this.setState({ fixed: true })
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+const fixedOverlayMenuStyle = {
+    ...overlayMenuStyle,
+    left: '800px',
+}
+
+const LeftImage = () => (
+    <Image
+        floated='left'
+        size='medium'
+        src='/assets/images/wireframe/square-image.png'
+        style={{ margin: '2em 2em 2em -4em' }}
+    />
+)
+
+const RightImage = () => (
+    <Image
+        floated='right'
+        size='medium'
+        src='/assets/images/wireframe/square-image.png'
+        style={{ margin: '2em -4em 2em 2em' }}
+    />
+)
+
+const Paragraph = () => (
+    <p>
+        {[
+            'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ',
+            'tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas ',
+            'semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ',
+            'ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean ',
+            'fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. ',
+            'Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor ',
+            'neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, ',
+            'accumsan porttitor, facilisis luctus, metus',
+        ].join('')}
+    </p>
+)
+
+export default class StickyLayout extends Component {
+    state = {
+        menuFixed: false,
+        overlayFixed: false,
+    }
+
+    handleOverlayRef = (c) => {
+        const { overlayRect } = this.state
+
+        if (!overlayRect) this.setState({ overlayRect: _.pick(c.getBoundingClientRect(), 'height', 'width') })
+    }
+
+    stickOverlay = () => this.setState({ overlayFixed: true })
+
+    stickTopMenu = () => this.setState({ menuFixed: true })
+
+    unStickOverlay = () => this.setState({ overlayFixed: false })
+
+    unStickTopMenu = () => this.setState({ menuFixed: false })
 
     render() {
-        const { children } = this.props
-        const { fixed } = this.state
-        const { activeItem } = this.state
+        const { menuFixed, overlayFixed, overlayRect } = this.state
 
         return (
-            <Responsive {...Responsive.onlyComputer}>
-                <Visibility once={false} onBottomPassed={this.showFixedMenu} onBottomPassedReverse={this.hideFixedMenu}>
-                    <Segment inverted color="green" textAlign='center' vertical>
-                        <Menu
-                            fixed={fixed ? 'top' : null}
-                            pointing={!fixed}
-                            secondary={!fixed}
-                            size='massive'
-                            color="white"
-                        >
-                            <Container>
-                                <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} as='a'>
-                                    <Link to='/'>
-                                        Home
-                                    </Link>
-                                </Menu.Item>
-                                <Menu.Item name='articles' active={activeItem === 'articles'} onClick={this.handleItemClick} as='a'>
-                                    <Link to='/articles'>
-                                        Articles
-                                    </Link>
-                                </Menu.Item>
+            <div>
+                {/* Heads up, style below isn't necessary for correct work of example, simply our docs defines other
+            background color.
+          */}
+                <style>{`
+          html, body {
+            background: #fff;
+          }
+        `}</style>
 
-                                <Menu.Item name='videos' active={activeItem === 'videos'} onClick={this.handleItemClick} as='a'>
-                                    <Link to='/videos'>
-                                        Videos
-                                    </Link>
-                                </Menu.Item>
+                <Container text style={{ marginTop: '2em' }}>
+                    <Header as='h1'>Sticky Example</Header>
+                    <p>This example shows how to use lazy loaded images, a sticky menu, and a simple text container</p>
+                </Container>
 
-                                <Menu.Item inverted name='about' active={activeItem === 'about'} onClick={this.handleItemClick} as='a'>About</Menu.Item>
+                {/* Attaching the top menu is a simple operation, we only switch `fixed` prop and add another style if it has
+            gone beyond the scope of visibility
+          */}
+                <Visibility
+                    onBottomPassed={this.stickTopMenu}
+                    onBottomVisible={this.unStickTopMenu}
+                    once={false}
+                >
+                    <Menu
+                        borderless
+                        fixed={menuFixed && 'top'}
+                        style={menuFixed ? fixedMenuStyle : menuStyle}
+                    >
+                        <Container text>
+                            <Menu.Item>
+                                <Image size='mini' src='/logo.png' />
+                            </Menu.Item>
+                            <Menu.Item header>Project Name</Menu.Item>
+                            <Menu.Item as='a'>Blog</Menu.Item>
+                            <Menu.Item as='a'>Articles</Menu.Item>
 
-                            </Container>
-                        </Menu>
-                        {/* <HomepageHeading /> */}
-                    </Segment>
+                            <Menu.Menu position='right'>
+                                <Dropdown text='Dropdown' pointing className='link item'>
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item>List Item</Dropdown.Item>
+                                        <Dropdown.Item>List Item</Dropdown.Item>
+                                        <Dropdown.Divider />
+                                        <Dropdown.Header>Header Item</Dropdown.Header>
+                                        <Dropdown.Item>
+                                            <i className='dropdown icon' />
+                                            <span className='text'>Submenu</span>
+                                            <Dropdown.Menu>
+                                                <Dropdown.Item>List Item</Dropdown.Item>
+                                                <Dropdown.Item>List Item</Dropdown.Item>
+                                            </Dropdown.Menu>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item>List Item</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            </Menu.Menu>
+                        </Container>
+                    </Menu>
                 </Visibility>
 
-                {children}
-            </Responsive>
+                <Container text>
+                    {_.times(3, i => <Paragraph key={i} />)}
+
+                    {/* Example with overlay menu is more complex, SUI simply clones all elements inside, but we should use a
+              different approach.
+
+              An empty Visibility element controls the need to change the fixing of element below, it also uses height
+              and width params received from its ref for correct display.
+            */}
+                    <Visibility
+                        offset={80}
+                        once={false}
+                        onTopPassed={this.stickOverlay}
+                        onTopVisible={this.unStickOverlay}
+                        style={overlayFixed ? { ...overlayStyle, ...overlayRect } : {}}
+                    />
+
+                    <div
+                        ref={this.handleOverlayRef}
+                        style={overlayFixed ? fixedOverlayStyle : overlayStyle}
+                    >
+                        <Menu
+                            icon='labeled'
+                            style={overlayFixed ? fixedOverlayMenuStyle : overlayMenuStyle}
+                            vertical
+                        >
+                            <Menu.Item>
+                                <Icon name='twitter' />
+                                Twitter
+              </Menu.Item>
+
+                            <Menu.Item >
+                                <Icon name='facebook' />
+                                Share
+              </Menu.Item>
+
+                            <Menu.Item>
+                                <Icon name='mail' />
+                                Email
+              </Menu.Item>
+                        </Menu>
+                    </div>
+
+                    {_.times(3, i => <Paragraph key={i} />)}
+                    <LeftImage />
+
+                    <Paragraph />
+                    <RightImage />
+
+                    {_.times(4, i => <Paragraph key={i} />)}
+                    <LeftImage />
+
+                    <Paragraph />
+                    <RightImage />
+
+                    {_.times(2, i => <Paragraph key={i} />)}
+                </Container>
+            </div>
         )
     }
 }
-
-DesktopContainer.propTypes = {
-    children: PropTypes.node,
-}
-
-class MobileContainer extends Component {
-    state = {}
-
-    handleToggle = () => this.setState({ sidebarOpened: !this.state.sidebarOpened })
-
-    render() {
-        const { children } = this.props
-        const { sidebarOpened } = this.state
-
-        return (
-            <Responsive {...Responsive.onlyMobile}>
-                <Sidebar.Pushable>
-                    <Sidebar as={Menu} animation='uncover' color="orange" vertical visible={sidebarOpened}>
-                        <Menu.Item as='a' active>
-                            <Link to='/'>Home</Link>
-                        </Menu.Item>
-                        <Menu.Item as='a'>Articles</Menu.Item>
-                        <Menu.Item as='a'>
-                            <Link to='/videos'>Videos</Link>
-                        </Menu.Item>
-                        <Menu.Item as='a'>About</Menu.Item>
-
-                    </Sidebar>
-
-                    <Sidebar.Pusher dimmed={sidebarOpened} onClick={this.handleToggle} style={{ minHeight: '100vh' }}>
-                        <Segment inverted color="green" textAlign='center' style={{ minHeight: 400, padding: '1em 0em' }} vertical>
-                            <Container>
-                                <Menu pointing secondary size='large'>
-                                    <Menu.Item onClick={this.handleToggle}>
-                                        <Icon name='sidebar' />
-                                    </Menu.Item>
-
-                                </Menu>
-                            </Container>
-                            {/* <HomepageHeading mobile /> */}
-                        </Segment>
-
-                        {children}
-                    </Sidebar.Pusher>
-                </Sidebar.Pushable>
-            </Responsive>
-        )
-    }
-}
-
-MobileContainer.propTypes = {
-    children: PropTypes.node,
-}
-
-const ResponsiveContainer = ({ children }) => (
-    <div>
-        <DesktopContainer>{children}</DesktopContainer>
-        <MobileContainer>{children}</MobileContainer>
-    </div>
-)
-
-ResponsiveContainer.propTypes = {
-    children: PropTypes.node,
-}
-
-const Navbar = () => (
-    <ResponsiveContainer />
-)
-export default Navbar
