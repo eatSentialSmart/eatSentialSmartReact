@@ -73,20 +73,18 @@ export default class Home extends Component {
         const caloriesMax = 'lte%20722';
 
         //HEALTH INPUT FUNCTION (VEGATARIAN, VEGAN, OMNIVORE);
-        let health = 'Omnivore';
+        let health = 'sugar-conscious';
         console.log(health);
 
-        //HEALTH RESTRICTION FUNCTION
-        let restrictions = 'low sugar';
-        console.log(restrictions);
+    
         //HEALTH DEFICIENCES FUNCTION
-        let diet = 'high protein';
+        let diet = 'balanced';
         console.log(diet);
 
         //JSONP CALLBACK FUNCTION
         let callback = "?";
         
-        let queryURLRec = `https://api.edamam.com/search?q=${searchFood}&app_id=${apiRecID}&app_key=${apiRecKey}&from=${fromIndex}&to=${toIndex}&calories='gte%0,%20lte%20722'&health=${health}${restrictions}&callback=food`;
+        let queryURLRec = `https://api.edamam.com/search?q=${searchFood}&app_id=${apiRecID}&app_key=${apiRecKey}&from=${fromIndex}&to=${toIndex}&health=${health}&${diet}&callback=food`;
         axios({
             url: queryURLRec,
             method: 'GET',
@@ -95,9 +93,7 @@ export default class Home extends Component {
         }).then( res=> {
             console.log(res);
             console.log(res.data);
-        }).done(Response => {
-            console.log(Response);
-        })
+        });
     }
 
     render(){
