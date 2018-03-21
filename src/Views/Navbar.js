@@ -39,7 +39,7 @@ class DesktopContainer extends Component {
         return (
             <Responsive {...Responsive.onlyComputer}>
                 <Visibility once={false} onBottomPassed={this.showFixedMenu} onBottomPassedReverse={this.hideFixedMenu}>
-                    <Segment inverted color="green" textAlign='center'  vertical>
+                    <Segment inverted color="green" textAlign='center' vertical>
                         <Menu
                             fixed={fixed ? 'top' : null}
                             pointing={!fixed}
@@ -52,7 +52,7 @@ class DesktopContainer extends Component {
                                     <Link to='/'>
                                         Home
                                     </Link>
-                                </Menu.Item>                             
+                                </Menu.Item>
                                 <Menu.Item name='articles' active={activeItem === 'articles'} onClick={this.handleItemClick} as='a'>
                                     <Link to='/articles'>
                                         Articles
@@ -66,7 +66,7 @@ class DesktopContainer extends Component {
                                 </Menu.Item>
 
                                 <Menu.Item inverted name='about' active={activeItem === 'about'} onClick={this.handleItemClick} as='a'>About</Menu.Item>
-                                
+
                             </Container>
                         </Menu>
                         {/* <HomepageHeading /> */}
@@ -104,7 +104,7 @@ class MobileContainer extends Component {
                             <Link to='/videos'>Videos</Link>
                         </Menu.Item>
                         <Menu.Item as='a'>About</Menu.Item>
-                        
+
                     </Sidebar>
 
                     <Sidebar.Pusher dimmed={sidebarOpened} onClick={this.handleToggle} style={{ minHeight: '100vh' }}>
@@ -114,7 +114,7 @@ class MobileContainer extends Component {
                                     <Menu.Item onClick={this.handleToggle}>
                                         <Icon name='sidebar' />
                                     </Menu.Item>
-                                    
+
                                 </Menu>
                             </Container>
                             {/* <HomepageHeading mobile /> */}
@@ -143,10 +143,7 @@ ResponsiveContainer.propTypes = {
     children: PropTypes.node,
 }
 
-const Layout = () => (
+const Navbar = () => (
     <ResponsiveContainer />
-        
-        
-   
 )
-export default Layout
+export default Navbar
