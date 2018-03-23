@@ -1,50 +1,128 @@
 import React, { Component } from 'react';
-import { Segment, Form, Button } from 'semantic-ui-react';
+import { Segment, Form, Button, Label, Radio } from 'semantic-ui-react';
+
+const resOptions = [
+    { key: '1', name: '1', text: '1', value: 1},
+    { key: '5', name: '5', text: '5', value: 5 },
+    { key: '10', name: '10', text: '10', value: 10 },
+  ]
+
+const dietOptions = [
+    { key: '1', name: '1', text: '1', value: 'high-protein'},
+    { key: '5', name: '5', text: '5', value: 'low-fat' },
+    { key: '10', name: '10', text: '10', value: 'low-cards' },
+  ]
 
 class HomeSearch extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {
-
+            value: '',
+            terms: {
+                foodie: '',
+                dietaryClass: '',
+                restriction: '',
+                needs: ''
+            }
         }
+
+    }
+
+    handleClick = (e, {value}) =>{ 
+        console.log(value);
+        this.setState({value});
+    }
+   
+    handleSelect = (e, data) => {
+        console.log(data);
+        const { name, value } = data;
+        const terms = { ...this.state.terms };
+        terms[name] = value;
+
+        this.setState({
+            terms
+        })
+    }
+
+    handleInputChange = ({target}) => {
+
+        const { name, value } = target;
+        const terms = { ...this.state.terms };
+        terms[name] = value;
+      
+        this.setState({
+          terms
+        });
+      };
+
+      handleSubmit = () => {
+        this.props.onSearchTermChange(this.state.terms);
+        this.setState({
+            terms: {
+                foodie: '',
+                startYear: '',
+                endYear: '',
+                selected: ''
+            }
+        })
     }
 
     render() {
-        return(
+        return (
             <div>
-                <Segment attached>
+                <Segment >
                     <Form>
                         <Form.Input 
                             onChange={this.handleInputChange}
                             value={this.state.terms.foodie}
                             name='foodie'
                             fluid 
-                            label='Search for Recipe and Restaurants' 
+                            label='Search for Food' 
                             placeholder='foodie' />
-                        <Form.Group inline>
-                            <label>Size</label>
-                            <Form.Radio label='Omnivore' value='sm' checked={value === 'sm'} onChange={this.handleChange} />
-                            <Form.Radio label='Vegetarian' value='md' checked={value === 'md'} onChange={this.handleChange} />
-                            <Form.Radio label='Vegan' value='lg' checked={value === 'lg'} onChange={this.handleChange} />
-                        </Form.Group>
-                        <Form.Group widths='equal'>
-                            <Form.Select
-                                onChange={this.handleSelect}
-                                fluid label='Number of Article'
-                                options={options}
-                                value={this.state.terms.selected}
-                                name='selected' 
-                                placeholder='1'/>   
-                            <Form.Select
-                                onChange={this.handleSelect}
-                                fluid label='Number of Article'
-                                options={options}
-                                value={this.state.terms.selected}
-                                name='selected' 
-                                placeholder='1'/>                            
-                        </Form.Group>   
+                            <Label basic>Please select your dietary classification</Label>
+                        <Form.Group inline widths='equal'>
                             
+                            <Form.Radio
+                                label='Omnivore'
+                                name='dietaryClass'
+                                value='omnivore'
+                                checked={this.state.terms.dietaryClass==='omnivore'}
+                                onChange={this.handleSelect}
+                                 />
+                            <Form.Radio
+                                label='Vegetarian'
+                                name='dietaryClass'
+                                value='vegetarian'
+                                checked={this.state.terms.dietaryClass==='vegetarian'}
+                                onChange={this.handleSelect}
+                                 />
+                            <Form.Radio
+                                label='Vegan'
+                                name='dietaryClass'
+                                value='vegan'
+                                checked={this.state.terms.dietaryClass==='vegan'}
+                                onChange={this.handleSelect}
+                                 />
+                        </Form.Group>     
+                        <Form.Group widths='equal'>
+                            <Form.Select 
+                                    multiple
+                                    onChange={this.handleSelect}
+                                    fluid label='Restrictions'
+                                    options={resOptions}
+                                    value={this.state.terms.selectedRes}
+                                    name='selectedRes' 
+                                    placeholder='1'/>   
+                            <Form.Select
+                                    multiple
+                                    onChange={this.handleSelect}
+                                    fluid label='Dietary Needs'
+                                    options={dietOptions}
+                                    value={this.state.terms.selectedDiet}
+                                    name='selectedDiet' 
+                                    placeholder='1'/>                              
+                        </Form.Group>   
                         <Form.Group widths='equal'>
                             <Form.Button
                                 onClick={e => this.handleSubmit(e)}>
@@ -53,6 +131,12 @@ class HomeSearch extends Component {
                                       
                         </Form.Group>                                         
                     </Form>
+                    <div>radio: {this.state.terms.dietaryClass}</div>
+                    <div>{this.state.terms.value}</div>
+                    <div>{this.state.value}</div>
+                    <div>restriction: {this.state.terms.selectedRes}</div>
+                    <div>diet: {this.state.terms.selectedDiet}</div>
+                    <div>{this.state.terms.foodie}</div>
                 </Segment>
             </div>
         )

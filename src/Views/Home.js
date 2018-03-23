@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {
-    Segment
+    Container
 } from 'semantic-ui-react';
 import axios from 'axios';
-
+import HomeSearch from '../Components/home_search_form';
 
 // const apiRecKey = "d2cd01518cc9bb800dbf181c4c01d203";
 // const apiRecID = "da8cf82c";
@@ -86,14 +86,14 @@ export default class Home extends Component {
     componentDidMount(){
 
     
-       this.searchZomato();
+       //this.searchZomato();
     }
     render() {
         return (
             <div>
-                <Segment style={{ padding: '8em 0em' }} vertical>
-                    -- Content Goes Here --
-                </Segment>
+                <Container>
+                    <HomeSearch />
+                </Container>
             </div>
         )
     }
