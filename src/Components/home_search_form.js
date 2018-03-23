@@ -22,24 +22,29 @@ class HomeSearch extends Component {
             terms: {
                 foodie: '',
                 dietaryClass: '',
-                restriction: '',
-                needs: ''
+                selectedDiet: [],
+                selectedRes: []
             }
         }
 
     }
 
-    handleClick = (e, {value}) =>{ 
-        console.log(value);
-        this.setState({value});
+    handleClick = (e, data) =>{ 
+        console.log(data);
+        const name = [...data.name]
+        
+        this.setState({
+            
+        });
     }
    
     handleSelect = (e, data) => {
         console.log(data);
-        const { name, value } = data;
+        const {name, value} = data;
         const terms = { ...this.state.terms };
         terms[name] = value;
-
+        console.log(`${name}: ${typeof(name)}`);
+        console.log(typeof(terms));
         this.setState({
             terms
         })
@@ -135,7 +140,7 @@ class HomeSearch extends Component {
                     <div>{this.state.terms.value}</div>
                     <div>{this.state.value}</div>
                     <div>restriction: {this.state.terms.selectedRes}</div>
-                    <div>diet: {this.state.terms.selectedDiet}</div>
+                    <div>diet: {this.state.terms.selectedDiet.join()}</div>
                     <div>{this.state.terms.foodie}</div>
                 </Segment>
             </div>
