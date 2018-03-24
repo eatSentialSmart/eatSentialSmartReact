@@ -54,7 +54,7 @@ export default class Home extends Component {
 
     searchForFood(terms) {
         
-        let queryURLRec = `https://api.edamam.com/search?q=${terms.foodie}&app_id=${apiRecID}&app_key=${apiRecKey}&from=0&to=20&health=${terms.dietaryClass}&diet=${terms.selectedDiet.join()}&restrictions=${terms.selectedRes.join()}&callback=food`;
+        let queryURLRec = `https://api.edamam.com/search?q=${terms.foodie}&app_id=${apiRecID}&app_key=${apiRecKey}&from=0&to=20&health=${terms.selectedRes}&diet=${terms.selectedDiet}&callback=food`;
         axios({
             url: queryURLRec,
             method: 'GET',
