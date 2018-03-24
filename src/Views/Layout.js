@@ -35,20 +35,20 @@ class DesktopContainer extends Component {
                             fixed={fixed ? 'top' : null}
                             inverted={!fixed}
                             secondary={!fixed}
-                            size='large'
+                            pointing
                             style={{ fontSize: '24px', }}
                         >
-                            <Container style={{ marginBottom: '-2em' }}>
+                            <Container>
                                 <Link to='/'>
                                     <Menu.Item name='recipes' active={activeItem === 'recipes'} onClick={this.handleItemClick}>Recipes</Menu.Item></Link>
                                 <Link to='/articles'>
                                     <Menu.Item name='articles' active={activeItem === 'articles'} onClick={this.handleItemClick}>Articles</Menu.Item></Link>
                                 <Link to='/videos'>
                                     <Menu.Item name='videos' active={activeItem === 'videos'} onClick={this.handleItemClick}>Videos</Menu.Item></Link>
-                                <Menu.Item style={{ marginTop: '-2em' }} position='right' name='recipes' onClick={this.handleItemClick}>
+                                <Menu.Item position='right' name='recipes' onClick={this.handleItemClick}>
                                     <Link to='/'><Image size='mini' src='/assets/img/logo.png' /></Link>
                                 </Menu.Item>
-                                <Menu.Item header style={{ marginLeft: '-2em', marginTop: '-2em', color: '#000' }} name='recipes' onClick={this.handleItemClick}><Link to='/'>eatSentialSmart</Link></Menu.Item>
+                                <Menu.Item header style={{ marginLeft: '-2em' }} name='recipes' onClick={this.handleItemClick}><Link to='/'>eatSentialSmart</Link></Menu.Item>
                             </Container>
                         </Menu>
                     </Segment>
@@ -89,7 +89,7 @@ class MobileContainer extends Component {
             <Responsive {...Responsive.onlyMobile}>
                 <Visibility once={false} onBottomPassed={this.showFixedMenu} onBottomPassedReverse={this.hideFixedMenu}>
                     <Sidebar.Pushable>
-                        <Sidebar as={Menu} animation='uncover' inverted color='blue' vertical visible={sidebarOpened} style={{ fontSize: '24px' }}>
+                        <Sidebar as={Menu} animation='uncover' pointing inverted color='blue' vertical visible={sidebarOpened} style={{ fontSize: '24px' }}>
                             <Link to='/'>
                                 <Menu.Item name='recipes' active={activeItem === 'recipes'} onClick={this.handleItemClick}>Recipes</Menu.Item></Link>
                             <Link to='/articles'>
