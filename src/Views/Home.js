@@ -18,40 +18,57 @@ let longitude;
 let coords;
 let position;
 
+
+const styles = {
+    marginTop: 40 
+}
+
 export default class Home extends Component {
 
-    // componentDidMount() {
-    //     //SEARCH INPUT;
-    //     let searchFood = 'cake';
+    constructor(props){
+        super(props);
 
-    //     //INDEX DISPLAY TOTAL = 20;
-    //     let fromIndex = 0;
-    //     let toIndex = 20;
+        this.state = {
+            searchFood: '',
+            fromIndex: 0,
+            toIndex: 20,
+            resstrictions: '',
+            health: '',
+            diet: ''
+        }
+    }
 
-    //     //HEALTH INPUT FUNCTION (VEGATARIAN, VEGAN, OMNIVORE);
-    //     let health = 'sugar-conscious';
-    //     console.log(health);
+    handleChange = (terms) => {
+        console.log(terms);
 
+        // this.setState({
+        //     searchFood: terms.foodie,
+        //     health: terms.dietaryClass,
+        //     resstrictions: terms.selectedRes.join(),
+        //     diet: terms.selectedDiet.join() 
+        // })
+        
+        this.searchForFood(terms);
+        this.searchZomato(terms);
+    }
 
-    //     //HEALTH DEFICIENCES FUNCTION
-    //     let diet = 'balanced';
-    //     console.log(diet);
+    searchForFood(terms) {
+        
+        let queryURLRec = `https://api.edamam.com/search?q=${terms.foodie}&app_id=${apiRecID}&app_key=${apiRecKey}&from=0&to=20&health=${terms.dietaryClass}&diet=${terms.selectedDiet.join()}&restrictions=${terms.selectedRes.join()}&callback=food`;
+        axios({
+            url: queryURLRec,
+            method: 'GET',
+            jsonpCallback: "food",
+            dataType: "jsonp",
+        }).then(res => {
+            console.log('----------------recipe data ----------------------');
+            console.log(res);
+            console.log(res.data);
+        });
+    }
 
-    //     let queryURLRec = `https://api.edamam.com/search?q=${searchFood}&app_id=${apiRecID}&app_key=${apiRecKey}&from=${fromIndex}&to=${toIndex}&health=${health}&${diet}&callback=food`;
-    //     axios({
-    //         url: queryURLRec,
-    //         method: 'GET',
-    //         jsonpCallback: "food",
-    //         dataType: "jsonp",
-    //     }).then(res => {
-    //         console.log(res);
-    //         console.log(res.data);
-    //     });
-    // }
-    searchZomato = () => {
+    searchZomato = (terms) => {
 
-    
-   
         this.getLocation = () => {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(this.showPosition);
@@ -64,9 +81,9 @@ export default class Home extends Component {
             console.log(long);
             console.log(position);
             
-            let searchFood = 'cake';
-            let health = 'sugar-conscious';
-            let queryURL = `https://developers.zomato.com/api/v2.1/search?q=${searchFood}%20&health=${health}&lat=${lat}&lon=${long}&sort=real_distance&order=asc`;
+            // let searchFood = 'cake';
+            // let health = 'sugar-conscious';
+            let queryURL = `https://developers.zomato.com/api/v2.1/search?q=${terms.foodie}%20&health=${terms.dietaryClass}&lat=${lat}&lon=${long}&sort=real_distance&order=asc`;
 
             axios({
                 method: "GET",
@@ -77,22 +94,29 @@ export default class Home extends Component {
                 dataType: 'json',
                 processData: true,
             }).then(res => {
+                console.log('--------------------restaurant data---------------------------');
                 console.log(res.data);
             });
         };
         this.getLocation();
     }
 
-    componentDidMount(){
 
-    
        //this.searchZomato();
-    }
+
     render() {
         return (
             <div>
                 <Container>
-                    <HomeSearch />
+                    <div style={styles}>
+                        <HomeSearch onSearchTermChange={terms => this.handleChange(terms)}/>
+                    </div>
+                    <div style={styles}>
+                        {/* <Results 
+                            sectionName='Article Results'
+                            articles={this.state.articles} /> */}
+                    </div>
+                    
                 </Container>
             </div>
         )
