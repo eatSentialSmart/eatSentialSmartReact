@@ -13,19 +13,19 @@ const apiRecID = "7cd61c30";
 //GLOBAL VARIABLES FOR GEOLOCATION
 let lat;
 let long;
-let latitude;
-let longitude;
-let coords;
-let position;
+// let latitude;
+// let longitude;
+// let coords;
+// let position;
 
 
 const styles = {
-    marginTop: 40 
+    marginTop: 40
 }
 
 export default class Home extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -47,13 +47,13 @@ export default class Home extends Component {
         //     resstrictions: terms.selectedRes.join(),
         //     diet: terms.selectedDiet.join() 
         // })
-        
+
         this.searchForFood(terms);
         this.searchZomato(terms);
     }
 
     searchForFood(terms) {
-        
+
         let queryURLRec = `https://api.edamam.com/search?q=${terms.foodie}&app_id=${apiRecID}&app_key=${apiRecKey}&from=0&to=20&health=${terms.selectedRes}&diet=${terms.selectedDiet}&callback=food`;
         axios({
             url: queryURLRec,
@@ -80,7 +80,7 @@ export default class Home extends Component {
             console.log(position.coords);
             console.log(long);
             console.log(position);
-            
+
             // let searchFood = 'cake';
             // let health = 'sugar-conscious';
             let queryURL = `https://developers.zomato.com/api/v2.1/search?q=${terms.foodie}%20&health=${terms.dietaryClass}&lat=${lat}&lon=${long}&sort=real_distance&order=asc`;
@@ -102,21 +102,21 @@ export default class Home extends Component {
     }
 
 
-       //this.searchZomato();
+    //this.searchZomato();
 
     render() {
         return (
             <div>
                 <Container>
                     <div style={styles}>
-                        <HomeSearch onSearchTermChange={terms => this.handleChange(terms)}/>
+                        <HomeSearch onSearchTermChange={terms => this.handleChange(terms)} />
                     </div>
                     <div style={styles}>
                         {/* <Results 
                             sectionName='Article Results'
                             articles={this.state.articles} /> */}
                     </div>
-                    
+
                 </Container>
             </div>
         )

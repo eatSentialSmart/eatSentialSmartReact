@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button, Icon, Label, Header, Item, Image } from 'semantic-ui-react';
+import { Button, Label, Item } from 'semantic-ui-react';
 
 
 const ArticleList = props => {
-    return(
+    return (
         <Item>
             <Item.Image src={`https://static01.nyt.com/${props.src}`} />
             <Item.Content>
@@ -13,10 +13,10 @@ const ArticleList = props => {
                 </Item.Meta>
                 <Item.Description>{props.snippet}</Item.Description>
                 <Item.Extra>
-                <Label>{props.date}</Label>
-                <Button>                   
-                    <a href={props.url} target='_blank' rel="noopener noreferrer">Open in new tab</a>
-                </Button>
+                    <Label>{props.date}</Label>
+                    <Button>
+                        <a href={props.url} target='_blank' rel="noopener noreferrer">Open in new tab</a>
+                    </Button>
                 </Item.Extra>
             </Item.Content>
         </Item>

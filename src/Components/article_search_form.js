@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Segment, Form, Button } from 'semantic-ui-react';
+import { Segment, Form } from 'semantic-ui-react';
 
 
 const options = [
-    { key: '1', name: '1', text: '1', value: 1},
+    { key: '1', name: '1', text: '1', value: 1 },
     { key: '5', name: '5', text: '5', value: 5 },
     { key: '10', name: '10', text: '10', value: 10 },
-  ]
+]
 
 class ASForm extends Component {
     constructor(props) {
@@ -22,7 +22,7 @@ class ASForm extends Component {
         }
 
     }
-   
+
     handleSelect = (e, data) => {
         const { name, value } = data;
         const terms = { ...this.state.terms };
@@ -33,18 +33,18 @@ class ASForm extends Component {
         })
     }
 
-    handleInputChange = ({target}) => {
+    handleInputChange = ({ target }) => {
 
         const { name, value } = target;
         const terms = { ...this.state.terms };
         terms[name] = value;
-      
-        this.setState({
-          terms
-        });
-      };
 
-      handleSubmit = () => {
+        this.setState({
+            terms
+        });
+    };
+
+    handleSubmit = () => {
         this.props.onSearchTermChange(this.state.terms);
         this.setState({
             terms: {
@@ -61,39 +61,39 @@ class ASForm extends Component {
             <div>
                 <Segment attached>
                     <Form>
-                        <Form.Input 
+                        <Form.Input
                             onChange={this.handleInputChange}
                             value={this.state.terms.foodie}
                             name='foodie'
-                            fluid 
-                            label='Search for Article' 
+                            fluid
+                            label='Search for Article'
                             placeholder='foodie' />
                         <Form.Group widths='equal'>
-                            <Form.Input 
+                            <Form.Input
                                 onChange={this.handleInputChange}
                                 value={this.state.terms.startYear}
                                 name='startYear'
                                 fluid label='Start Year' placeholder='2010' />
-                            <Form.Input 
+                            <Form.Input
                                 onChange={this.handleInputChange}
                                 value={this.state.terms.endYear}
-                                name='endYear' 
-                                fluid label='End Year' placeholder='2018' />                           
-                        </Form.Group>   
-                            <Form.Select
-                                onChange={this.handleSelect}
-                                fluid label='Number of Article'
-                                options={options}
-                                value={this.state.terms.selected}
-                                name='selected' 
-                                placeholder='1'/>   
+                                name='endYear'
+                                fluid label='End Year' placeholder='2018' />
+                        </Form.Group>
+                        <Form.Select
+                            onChange={this.handleSelect}
+                            fluid label='Number of Article'
+                            options={options}
+                            value={this.state.terms.selected}
+                            name='selected'
+                            placeholder='1' />
                         <Form.Group widths='equal'>
                             <Form.Button
                                 onClick={e => this.handleSubmit(e)}>
                                 Search
-                            </Form.Button>       
-                                      
-                        </Form.Group>                                         
+                            </Form.Button>
+
+                        </Form.Group>
                     </Form>
                 </Segment>
             </div>

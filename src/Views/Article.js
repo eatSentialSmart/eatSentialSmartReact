@@ -8,7 +8,7 @@ const API_KEY = 'b9f91d369ff59547cd47b931d8cbc56b:0:74623931';
 const queryURL = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${API_KEY}&q=`;
 
 const styles = {
-    marginTop: 40 
+    marginTop: '40px'
 }
 
 class Article extends Component {
@@ -20,7 +20,7 @@ class Article extends Component {
             name: '',
             startYear: '',
             endYear: '',
-            numberOfArticles: 1      
+            numberOfArticles: 1
         }
     }
 
@@ -31,36 +31,38 @@ class Article extends Component {
             name: terms.foodie,
             startYear: terms.startYear,
             endYear: terms.endYear,
-            numberOfArticles: terms.selected  
+            numberOfArticles: terms.selected
         })
-        
+
         this.searchForArticle(terms);
     }
 
     searchForArticle(terms) {
-            let start = parseInt(terms.startYear);
-            let end = parseInt(terms.endYear);
-            axios({
-                method: 'get',
-                url: `${queryURL}${terms.foodie}&begin_date=${start}0101&end_date=${end}0101`
-            }).then( res=> {
-                console.log(res.data);
-                this.setState({
-                    articles: res.data.response.docs
-                })
+        // eslint-disable-next-line
+        let start = parseInt(terms.startYear);
+        // eslint-disable-next-line
+        let end = parseInt(terms.endYear);
+        axios({
+            method: 'get',
+            url: `${queryURL}${terms.foodie}&begin_date=${start}0101&end_date=${end}0101`
+        }).then(res => {
+            console.log(res.data);
+            this.setState({
+                articles: res.data.response.docs
             })
-     
+        })
+
     }
 
     render() {
-        return(
+        return (
             <div>
                 <Container>
                     <div style={styles}>
                         <ASForm onSearchTermChange={terms => this.handleChange(terms)} />
                     </div>
                     <div style={styles}>
-                        <Results 
+                        <Results
                             sectionName='Article Results'
                             articles={this.state.articles} />
                     </div>

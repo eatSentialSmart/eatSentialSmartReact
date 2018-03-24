@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Segment, Form, Button, Label, Header } from 'semantic-ui-react';
+import { Segment, Form, Header } from 'semantic-ui-react';
 
 const healthOptions = [
-    { key: 'sugar-conscious', text: 'Low Sugar', value: 'sugar-conscious'},
+    { key: 'sugar-conscious', text: 'Low Sugar', value: 'sugar-conscious' },
     { key: 'peanut-free', text: 'No Peanuts', value: 'peanut-free' },
     { key: 'tree-nut-free', text: 'No Tree Nuts', value: 'tree-nut-free' },
     { key: 'alcohol-free', text: 'No Alcohol', value: 'alcohol-free' },
@@ -13,16 +13,16 @@ const healthOptions = [
     { key: 'vegetarian', text: 'Vegetarian', value: 'vegetarian' },
     { key: 'vegan', text: 'Vegan', value: 'vegan' },
 
-  ]
+]
 
 const dietOptions = [
-    { key: 'balanced', text: 'Balanced Protein, Fat and Carbs', value: 'balanced'},
+    { key: 'balanced', text: 'Balanced Protein, Fat and Carbs', value: 'balanced' },
     { key: 'high-protein', text: 'High Protein', value: 'high-protein' },
     { key: 'high-fiber', text: 'High Fiber', value: 'high-fiber' },
     { key: 'low-fat', text: 'Low Fat', value: 'low-fat' },
     { key: 'low-carbs', text: 'Low Carbs', value: 'low-carbs' },
     { key: 'low-sodium', text: 'Low Sodium', value: 'low-sodium' }
-  ]
+]
 
 class HomeSearch extends Component {
     constructor(props) {
@@ -42,25 +42,25 @@ class HomeSearch extends Component {
 
     handleSelect = (e, data) => {
         console.log(data);
-        const {name, value} = data;
+        const { name, value } = data;
         const terms = { ...this.state.terms };
         terms[name] = value;
-        console.log(`${name}: ${value} - ${typeof(name)}`);
+        console.log(`${name}: ${value} - ${typeof (name)}`);
         this.setState({
             terms
         })
     }
 
-    handleInputChange = ({target}) => {
+    handleInputChange = ({ target }) => {
         const { name, value } = target;
         const terms = { ...this.state.terms };
-        terms[name] = value;      
+        terms[name] = value;
         this.setState({
-          terms
+            terms
         });
-      };
+    };
 
-      handleSubmit = () => {
+    handleSubmit = () => {
         this.props.onSearchTermChange(this.state.terms);
         this.setState({
             terms: {
@@ -80,11 +80,11 @@ class HomeSearch extends Component {
                             <Header>Search For Food</Header>
                         </Segment>
                         <Segment attached='bottom'>
-                            <Form.Input 
+                            <Form.Input
                                 onChange={this.handleInputChange}
                                 value={this.state.terms.foodie}
                                 name='foodie'
-                                fluid 
+                                fluid
                                 placeholder='foodie' />
                         </Segment>
                         {/* <Segment attached='top'>
@@ -120,32 +120,32 @@ class HomeSearch extends Component {
                         </Segment>
                         <Segment attached='bottom'>
                             <Form.Group widths='equal'>
-                                <Form.Select 
-                                        
-                                        onChange={this.handleSelect}
-                                        fluid label='Health Restrictions'
-                                        options={healthOptions}
-                                        value={this.state.terms.selectedRes}
-                                        name='selectedRes' 
-                                        placeholder='Low Sugar'/>   
                                 <Form.Select
-                                        
-                                        onChange={this.handleSelect}
-                                        fluid label='Dietary Needs'
-                                        options={dietOptions}
-                                        value={this.state.terms.selectedDiet}
-                                        name='selectedDiet' 
-                                        placeholder='Balanced'/>                              
-                            </Form.Group> 
+
+                                    onChange={this.handleSelect}
+                                    fluid label='Health Restrictions'
+                                    options={healthOptions}
+                                    value={this.state.terms.selectedRes}
+                                    name='selectedRes'
+                                    placeholder='Low Sugar' />
+                                <Form.Select
+
+                                    onChange={this.handleSelect}
+                                    fluid label='Dietary Needs'
+                                    options={dietOptions}
+                                    value={this.state.terms.selectedDiet}
+                                    name='selectedDiet'
+                                    placeholder='Balanced' />
+                            </Form.Group>
                         </Segment>
-                          
+
                         <Form.Group widths='equal'>
                             <Form.Button
                                 fluid
                                 onClick={e => this.handleSubmit(e)}>
                                 Search
-                            </Form.Button>                                             
-                        </Form.Group>                                         
+                            </Form.Button>
+                        </Form.Group>
                     </Form>
                     {/* <div>radio: {this.state.terms.dietaryClass}</div>
                     <div>{this.state.terms.value}</div>
@@ -159,5 +159,5 @@ class HomeSearch extends Component {
     }
 }
 
-export default HomeSearch; 
+export default HomeSearch;
 
