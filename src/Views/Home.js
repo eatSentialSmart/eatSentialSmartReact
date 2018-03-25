@@ -4,6 +4,8 @@ import {
 } from 'semantic-ui-react';
 import axios from 'axios';
 import HomeSearch from '../Components/home_search_form';
+import HomeResults from '../Components/home_results';
+
 
 // const apiRecKey = "d2cd01518cc9bb800dbf181c4c01d203";
 // const apiRecID = "da8cf82c";
@@ -29,24 +31,13 @@ export default class Home extends Component {
         super(props);
 
         this.state = {
-            searchFood: '',
-            fromIndex: 0,
-            toIndex: 20,
-            resstrictions: '',
-            health: '',
-            diet: ''
+          recipes:[],
+          restaurants: []
         }
     }
 
     handleChange = (terms) => {
         console.log(terms);
-
-        // this.setState({
-        //     searchFood: terms.foodie,
-        //     health: terms.dietaryClass,
-        //     resstrictions: terms.selectedRes.join(),
-        //     diet: terms.selectedDiet.join() 
-        // })
 
         this.searchForFood(terms);
         this.searchZomato(terms);
@@ -54,7 +45,7 @@ export default class Home extends Component {
 
     searchForFood(terms) {
 
-        let queryURLRec = `https://api.edamam.com/search?q=${terms.foodie}&app_id=${apiRecID}&app_key=${apiRecKey}&from=0&to=20&health=${terms.selectedRes}&diet=${terms.selectedDiet}&callback=food`;
+        let queryURLRec = `https://api.edamam.com/search?q=${terms.foodie}&app_id=${apiRecID}&app_key=${apiRecKey}&from=0&to=20&health=${terms.selectedRes}&diet=${terms.selectedDiet}`;
         axios({
             url: queryURLRec,
             method: 'GET',
@@ -63,7 +54,13 @@ export default class Home extends Component {
         }).then(res => {
             console.log('----------------recipe data ----------------------');
             console.log(res);
+            console.log(res.hits);
             console.log(res.data);
+            console.log(res.data.hits);
+            //console.log(res.data.hits.map( item => console.log(item.label)));
+            this.setState({
+                recipes: res.data.hits
+            })
         });
     }
 
@@ -96,13 +93,13 @@ export default class Home extends Component {
             }).then(res => {
                 console.log('--------------------restaurant data---------------------------');
                 console.log(res.data);
+                this.setState({
+                    restaurants: res.data.restaurants
+                });
             });
         };
         this.getLocation();
     }
-
-
-    //this.searchZomato();
 
     render() {
         return (
@@ -111,10 +108,10 @@ export default class Home extends Component {
                     <div style={styles}>
                         <HomeSearch onSearchTermChange={terms => this.handleChange(terms)} />
                     </div>
-                    <div style={styles}>
-                        {/* <Results 
-                            sectionName='Article Results'
-                            articles={this.state.articles} /> */}
+                    <div style={styles}>  
+                        <HomeResults 
+                            recipes={this.state.recipes}
+                            restaurants={this.state.restaurants} />
                     </div>
 
                 </Container>
