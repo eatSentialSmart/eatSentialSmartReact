@@ -32,7 +32,7 @@ export default class Home extends Component {
 
         this.state = {
           recipes:[],
-          restaurants: ''
+          restaurants: []
         }
     }
 
@@ -40,7 +40,7 @@ export default class Home extends Component {
         console.log(terms);
 
         this.searchForFood(terms);
-        //this.searchZomato(terms);
+        this.searchZomato(terms);
     }
 
     searchForFood(terms) {
@@ -93,13 +93,13 @@ export default class Home extends Component {
             }).then(res => {
                 console.log('--------------------restaurant data---------------------------');
                 console.log(res.data);
+                this.setState({
+                    restaurants: res.data.restaurants
+                });
             });
         };
         this.getLocation();
     }
-
-
-    //this.searchZomato();
 
     render() {
         return (
@@ -109,7 +109,9 @@ export default class Home extends Component {
                         <HomeSearch onSearchTermChange={terms => this.handleChange(terms)} />
                     </div>
                     <div style={styles}>  
-                        <HomeResults recipes={this.state.recipes}/>
+                        <HomeResults 
+                            recipes={this.state.recipes}
+                            restaurants={this.state.restaurants} />
                     </div>
 
                 </Container>

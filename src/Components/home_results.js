@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Segment, Header } from 'semantic-ui-react';
 import Recipe from './recipe_segment';
+import Restaurant from './restaurant_segment';
 
 const HomeResults = props => {
     return(
@@ -18,7 +19,7 @@ const HomeResults = props => {
                     <Header>Restaurant Results</Header>
                 </Segment>
                 <Segment attached='bottom'>
-                    
+                    <Restaurant restaurants={props.restaurants} />
                 </Segment>
             </Grid.Column>
         </Grid>
