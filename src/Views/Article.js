@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container } from 'semantic-ui-react';
 import axios from 'axios';
 import ASForm from '../Components/article_search_form';
-import Results from '../Components/result_segment';
+import ArticleResults from '../Components/article_segment';
 
 const API_KEY = 'b9f91d369ff59547cd47b931d8cbc56b:0:74623931';
 const queryURL = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${API_KEY}&q=`;
@@ -62,9 +62,10 @@ class Article extends Component {
                         <ASForm onSearchTermChange={terms => this.handleChange(terms)} />
                     </div>
                     <div style={styles}>
-                        <Results
+                        <ArticleResults
                             sectionName='Article Results'
-                            articles={this.state.articles} />
+                            articles={this.state.articles} 
+                            count={this.state.numberOfArticles}/>
                     </div>
                 </Container>
             </div>

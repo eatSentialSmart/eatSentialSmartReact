@@ -3,9 +3,9 @@ import { Segment, Form } from 'semantic-ui-react';
 
 
 const options = [
-    { key: '1', name: '1', text: '1', value: 1 },
-    { key: '5', name: '5', text: '5', value: 5 },
-    { key: '10', name: '10', text: '10', value: 10 },
+    { key: '1', text: '1', value: 1 },
+    { key: '5', text: '5', value: 5 },
+    { key: '10', text: '10', value: 10 },
 ]
 
 class ASForm extends Component {
@@ -17,7 +17,7 @@ class ASForm extends Component {
                 foodie: '',
                 startYear: '',
                 endYear: '',
-                selected: ''
+                selected: 1
             }
         }
 
