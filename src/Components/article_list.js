@@ -5,7 +5,7 @@ import { Button, Label, Item } from 'semantic-ui-react';
 const ArticleList = props => {
     return (
         <Item>
-            <Item.Image src={`https://static01.nyt.com/${props.src}`} />
+            <Item.Image src={props.src} />
             <Item.Content>
                 <Item.Header as='a'>{props.title}</Item.Header>
                 <Item.Meta>

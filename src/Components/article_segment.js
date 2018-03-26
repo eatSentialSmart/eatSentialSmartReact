@@ -2,8 +2,12 @@ import React from 'react';
 import { Segment, Header, Item } from 'semantic-ui-react';
 import ArticleList from './article_list';
 
-const Results = props => {
-    const articleItems = props.articles.map( (article, i) => {
+const ArticleResults = props => {
+    let count = props.count;
+    const imagePlaceHolder = 'http://via.placeholder.com/175x116?text=Image+Not+Found'
+    const imageUrl = 'https://static01.nyt.com/';
+ 
+    const articleItems = props.articles.slice(0, count).map( (article, i) => {
         return (
             <ArticleList
                 key={article._id}
@@ -13,7 +17,7 @@ const Results = props => {
                 date={article.pub_date}
                 url={article.web_url}
                 snippet={article.snippet}
-                src={article.multimedia[1].url} />
+                src={typeof(article.multimedia[1])==='undefined' ? imagePlaceHolder : `${imageUrl}${article.multimedia[1].url}`} />
         )
     })
 
@@ -31,4 +35,4 @@ const Results = props => {
     )
 }
 
-export default Results;
+export default ArticleResults;
