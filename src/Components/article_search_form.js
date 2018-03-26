@@ -44,8 +44,13 @@ class ASForm extends Component {
         });
     };
 
-    handleSubmit = () => {
-        this.props.onSearchTermChange(this.state.terms);
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.props.onSearchTermChange(this.state.terms)
+    };
+
+    handleClear = (e) => {
+        e.preventDefault();
         this.setState({
             terms: {
                 foodie: '',
@@ -55,13 +60,13 @@ class ASForm extends Component {
             }
         })
     }
-
     render() {
         return (
             <div>
                 <Segment attached>
                     <Form>
                         <Form.Input
+                            required
                             onChange={this.handleInputChange}
                             value={this.state.terms.foodie}
                             name='foodie'
@@ -70,17 +75,22 @@ class ASForm extends Component {
                             placeholder='foodie' />
                         <Form.Group widths='equal'>
                             <Form.Input
+                                required
+                                type='number'
                                 onChange={this.handleInputChange}
                                 value={this.state.terms.startYear}
                                 name='startYear'
                                 fluid label='Start Year' placeholder='2010' />
                             <Form.Input
+                                required
+                                type='number'
                                 onChange={this.handleInputChange}
                                 value={this.state.terms.endYear}
                                 name='endYear'
                                 fluid label='End Year' placeholder='2018' />
                         </Form.Group>
                         <Form.Select
+                            required
                             onChange={this.handleSelect}
                             fluid label='Number of Article'
                             options={options}
@@ -89,8 +99,15 @@ class ASForm extends Component {
                             placeholder='1' />
                         <Form.Group widths='equal'>
                             <Form.Button
+                                fluid
+                                disabled={!this.state.terms.foodie}
                                 onClick={e => this.handleSubmit(e)}>
                                 Search
+                            </Form.Button>
+                            <Form.Button
+                                fluid
+                                onClick={e => this.handleClear(e)}>
+                                Clear
                             </Form.Button>
 
                         </Form.Group>

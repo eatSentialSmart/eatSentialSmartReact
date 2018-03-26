@@ -60,8 +60,13 @@ class HomeSearch extends Component {
         });
     };
 
-    handleSubmit = () => {
-        this.props.onSearchTermChange(this.state.terms);
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.props.onSearchTermChange(this.state.terms)
+    };
+    
+    handleClear = (e) => {
+        e.preventDefault();
         this.setState({
             terms: {
                 foodie: '',
@@ -70,7 +75,6 @@ class HomeSearch extends Component {
             }
         })
     }
-
     render() {
         return (
             <div>
@@ -85,43 +89,15 @@ class HomeSearch extends Component {
                                 value={this.state.terms.foodie}
                                 name='foodie'
                                 fluid
-                                placeholder='foodie' />
+                                placeholder='foodie' 
+                                required/>
                         </Segment>
-                        {/* <Segment attached='top'>
-                            <Header>Please select your dietary classification:</Header>
-                        </Segment>
-                        <Segment attached='bottom'>
-                            <Form.Group inline widths='equal'>
-                                <Form.Radio
-                                    label='Omnivore'
-                                    name='dietaryClass'
-                                    value='omnivore'
-                                    checked={this.state.terms.dietaryClass==='omnivore'}
-                                    onChange={this.handleSelect}
-                                    />
-                                <Form.Radio
-                                    label='Vegetarian'
-                                    name='dietaryClass'
-                                    value='vegetarian'
-                                    checked={this.state.terms.dietaryClass==='vegetarian'}
-                                    onChange={this.handleSelect}
-                                    />
-                                <Form.Radio
-                                    label='Vegan'
-                                    name='dietaryClass'
-                                    value='vegan'
-                                    checked={this.state.terms.dietaryClass==='vegan'}
-                                    onChange={this.handleSelect}
-                                    />
-                            </Form.Group> 
-                        </Segment> */}
                         <Segment attached='top'>
                             <Header>Add any dietary restrictions or needs:</Header>
                         </Segment>
                         <Segment attached='bottom'>
                             <Form.Group widths='equal'>
                                 <Form.Select
-
                                     onChange={this.handleSelect}
                                     fluid label='Health Restrictions'
                                     options={healthOptions}
@@ -129,7 +105,7 @@ class HomeSearch extends Component {
                                     name='selectedRes'
                                     placeholder='Low Sugar' />
                                 <Form.Select
-
+                                    required
                                     onChange={this.handleSelect}
                                     fluid label='Dietary Needs'
                                     options={dietOptions}
@@ -142,17 +118,17 @@ class HomeSearch extends Component {
                         <Form.Group widths='equal'>
                             <Form.Button
                                 fluid
+                                disabled={!this.state.terms.foodie}
                                 onClick={e => this.handleSubmit(e)}>
                                 Search
                             </Form.Button>
+                            <Form.Button
+                                fluid
+                                onClick={e => this.handleClear(e)}>
+                                Clear
+                            </Form.Button>
                         </Form.Group>
                     </Form>
-                    {/* <div>radio: {this.state.terms.dietaryClass}</div>
-                    <div>{this.state.terms.value}</div>
-                    <div>{this.state.value}</div>
-                    <div>restriction: {this.state.terms.selectedRes}</div>
-                    <div>diet: {this.state.terms.selectedDiet}</div>
-                    <div>{this.state.terms.foodie}</div> */}
                 </Segment>
             </div>
         )
