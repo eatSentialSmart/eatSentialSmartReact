@@ -3,8 +3,8 @@ import {
     Container
 } from 'semantic-ui-react';
 import axios from 'axios';
-import HomeSearch from '../Components/home_search_form';
-import HomeResults from '../Components/home_results';
+import RecipeSearch from '../Components/recipe_search_form';
+import RecipeResults from '../Components/recipe_results';
 
 
 // const apiRecKey = "d2cd01518cc9bb800dbf181c4c01d203";
@@ -17,17 +17,17 @@ let lat;
 let long;
 
 const styles = {
-    marginTop: 40
+    margin: '40px'
 }
 
-export default class Home extends Component {
+export default class Recipe extends Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-          recipes:[],
-          restaurants: []
+            recipes: [],
+            restaurants: []
         }
     }
 
@@ -97,10 +97,10 @@ export default class Home extends Component {
             <div>
                 <Container>
                     <div style={styles}>
-                        <HomeSearch onSearchTermChange={terms => this.handleChange(terms)} />
+                        <RecipeSearch onSearchTermChange={terms => this.handleChange(terms)} />
                     </div>
-                    <div style={styles}>  
-                        <HomeResults 
+                    <div style={styles}>
+                        <RecipeResults
                             recipes={this.state.recipes}
                             restaurants={this.state.restaurants} />
                     </div>
