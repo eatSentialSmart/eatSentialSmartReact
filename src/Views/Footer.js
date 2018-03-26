@@ -11,7 +11,7 @@ import {
 
 const HomepageLayout = () => (
     <Responsive>
-        <Segment inverted color='blue' vertical style={{ padding: '2em 0em' }}>
+        <Segment inverted color='blue' vertical style={{ padding: '2em 0em', marginBottom: '-0' }}>
             <Container>
                 <Grid divided inverted stackable>
                     <Grid.Row>
