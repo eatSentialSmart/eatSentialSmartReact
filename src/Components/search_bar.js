@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Button, Input, Icon } from 'semantic-ui-react';
 
+const styles = {
+    width: '100%'
+}
+
 class SearchBar extends Component {
     constructor(props) {
         super(props);
@@ -21,6 +25,7 @@ class SearchBar extends Component {
     render() {
         return (
             <Input
+                style={styles}
                 required
                 onChange={e => this.onInputChange(e)}
                 value={this.state.term}
@@ -29,6 +34,7 @@ class SearchBar extends Component {
                 action>
                 <input />
                 <Button
+                    size='tiny'
                     disabled={!this.state.term}
                     onClick={e => this.handleSubmit(e)}
                     type='submit'
