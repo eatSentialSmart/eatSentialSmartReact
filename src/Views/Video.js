@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import SearchBar from '../Components/search_bar';
 import YTSearch from 'youtube-api-search';
 import VideoDetail from '../Components/video_detail';
-import { Container, Segment } from 'semantic-ui-react'; 
+import { Container, Segment } from 'semantic-ui-react';
 import VideoList from '../Components/video_list';
 
 const API_KEY = 'AIzaSyBlsDKSEnADH6MFN6rhFZQNfJuN-ceK99k';
+
+const styles = {
+    margin: '40px'
+}
 
 class Video extends Component {
     constructor(props) {
@@ -20,7 +24,7 @@ class Video extends Component {
     }
 
     videoSearch(term) {
-        YTSearch({ key: API_KEY, term: term}, videos => {
+        YTSearch({ key: API_KEY, term: term }, videos => {
             this.setState({
                 videos: videos,
                 selectedVideo: videos[0]
@@ -31,18 +35,20 @@ class Video extends Component {
     render() {
         return (
             <div>
-                <Segment>
-                <SearchBar  onSearchTermChange={term => this.videoSearch(term)} />
-                </Segment>
                 <Container>
-                    <Segment>
-                        <VideoDetail video={this.state.selectedVideo}/>
-                    </Segment>
-                    <Segment>
-                        <VideoList 
-                            onVideoSelect={selectedVideo => this.setState({selectedVideo})}
-                            videos={this.state.videos} />
-                    </Segment>
+                    <SearchBar style={{ styles }} onSearchTermChange={term => this.videoSearch(term)} />
+                    <div style={{ styles }}>
+                        <Segment>
+                            <VideoDetail video={this.state.selectedVideo} />
+                        </Segment>
+                    </div>
+                    <div style={{ styles }}>
+                        <Segment>
+                            <VideoList
+                                onVideoSelect={selectedVideo => this.setState({ selectedVideo })}
+                                videos={this.state.videos} />
+                        </Segment>
+                    </div>
                 </Container>
             </div>
         )

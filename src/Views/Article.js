@@ -8,7 +8,7 @@ const API_KEY = 'b9f91d369ff59547cd47b931d8cbc56b:0:74623931';
 const queryURL = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${API_KEY}&q=`;
 
 const styles = {
-    marginTop: '40px'
+    margin: '40px'
 }
 
 class Article extends Component {
@@ -64,8 +64,8 @@ class Article extends Component {
                     <div style={styles}>
                         <ArticleResults
                             sectionName='Article Results'
-                            articles={this.state.articles} 
-                            count={this.state.numberOfArticles}/>
+                            articles={this.state.articles}
+                            count={this.state.numberOfArticles} />
                     </div>
                 </Container>
             </div>
