@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './Views/Home';
+import Recipe from './Views/Recipe';
 import DesktopLayout from './Views/DesktopLayout';
 import MobileLayout from './Views/MobileLayout';
 import Article from './Views/Article';
@@ -15,10 +15,10 @@ export default props => (
       <DesktopLayout />
       <MobileLayout />
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Recipe} />
         <Route exact path="/articles" component={Article} />
         <Route exact path="/videos" component={Video} />
-        <Route path="/" component={Home} />
+        <Route path="/" component={Recipe} />
       </Switch>
       <Footer />
     </div>

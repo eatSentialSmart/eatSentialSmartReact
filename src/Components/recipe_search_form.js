@@ -24,7 +24,7 @@ const dietOptions = [
     { key: 'low-sodium', text: 'Low Sodium', value: 'low-sodium' }
 ]
 
-class HomeSearch extends Component {
+class RecipeSearch extends Component {
     constructor(props) {
         super(props);
 
@@ -130,5 +130,5 @@ class HomeSearch extends Component {
     }
 }
 
-export default HomeSearch;
+export default RecipeSearch;
 

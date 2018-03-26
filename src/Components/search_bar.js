@@ -9,15 +9,15 @@ class SearchBar extends Component {
 
     onInputChange(event) {
         this.setState({ term: event.target.value });
-        
+
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
         this.props.onSearchTermChange(this.state.term);
-        this.setState({ term: ''});
+        this.setState({ term: '' });
     }
-    
+
     render() {
         return (
             <Input
