@@ -11,7 +11,7 @@ const RecipeList = props => {
                 <Image src={props.src} />
                 <Card.Content>
                     <Card.Header>{props.title}</Card.Header>
-                    <Card.Meta><b>Calories:</b> {props.calories}</Card.Meta>
+                    <Card.Meta><b>Calories:</b> {Math.round(props.calories)}</Card.Meta>
                     <Card.Description><b>Health Concerns:</b> {props.health.join(', ')}</Card.Description>
                 </Card.Content>
                 <Card.Content extra>
