@@ -15,11 +15,6 @@ const apiRecID = "7cd61c30";
 //GLOBAL VARIABLES FOR GEOLOCATION
 let lat;
 let long;
-// let latitude;
-// let longitude;
-// let coords;
-// let position;
-
 
 const styles = {
     marginTop: 40
@@ -53,11 +48,9 @@ export default class Home extends Component {
             dataType: "jsonp",
         }).then(res => {
             console.log('----------------recipe data ----------------------');
-            console.log(res);
-            console.log(res.hits);
             console.log(res.data);
             console.log(res.data.hits);
-            //console.log(res.data.hits.map( item => console.log(item.label)));
+
             this.setState({
                 recipes: res.data.hits
             })
@@ -78,8 +71,6 @@ export default class Home extends Component {
             console.log(long);
             console.log(position);
 
-            // let searchFood = 'cake';
-            // let health = 'sugar-conscious';
             let queryURL = `https://developers.zomato.com/api/v2.1/search?q=${terms.foodie}%20&health=${terms.dietaryClass}&lat=${lat}&lon=${long}&sort=real_distance&order=asc`;
 
             axios({

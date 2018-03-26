@@ -13,6 +13,7 @@ class SearchBar extends Component {
     }
 
     handleSubmit = (event) => {
+        event.preventDefault();
         this.props.onSearchTermChange(this.state.term);
         this.setState({ term: ''});
     }
@@ -20,6 +21,7 @@ class SearchBar extends Component {
     render() {
         return (
             <Input
+                required
                 onChange={e => this.onInputChange(e)}
                 value={this.state.term}
                 type='text'
@@ -27,6 +29,7 @@ class SearchBar extends Component {
                 action>
                 <input />
                 <Button
+                    disabled={!this.state.term}
                     onClick={e => this.handleSubmit(e)}
                     type='submit'
                     animated>
