@@ -6,10 +6,10 @@ const healthOptions = [
     { key: 'peanut-free', text: 'No Peanuts', value: 'peanut-free' },
     { key: 'tree-nut-free', text: 'No Tree Nuts', value: 'tree-nut-free' },
     { key: 'alcohol-free', text: 'No Alcohol', value: 'alcohol-free' },
-    { key: 'dairy-free', text: 'Dairy Free', value: 'dairy-free' },
-    { key: 'egg-free', text: 'Egg Free', value: 'egg-free' },
-    { key: 'fish-free', text: 'Fish Free', value: 'fish-free' },
-    { key: 'gluten-free', text: 'Gluten Free', value: 'gluten-free' },
+    // { key: 'dairy-free', text: 'Dairy Free', value: 'dairy-free' },
+    // { key: 'egg-free', text: 'Egg Free', value: 'egg-free' },
+    // { key: 'pescatarian', text: 'Pescatarian', value: 'pescatarian' },
+    // { key: 'gluten-free', text: 'Gluten Free', value: 'gluten-free' },
     { key: 'vegetarian', text: 'Vegetarian', value: 'vegetarian' },
     { key: 'vegan', text: 'Vegan', value: 'vegan' },
 
@@ -18,10 +18,10 @@ const healthOptions = [
 const dietOptions = [
     { key: 'balanced', text: 'Balanced Protein, Fat and Carbs', value: 'balanced' },
     { key: 'high-protein', text: 'High Protein', value: 'high-protein' },
-    { key: 'high-fiber', text: 'High Fiber', value: 'high-fiber' },
+    // { key: 'high-fiber', text: 'High Fiber', value: 'high-fiber' },
     { key: 'low-fat', text: 'Low Fat', value: 'low-fat' },
-    { key: 'low-carbs', text: 'Low Carbs', value: 'low-carbs' },
-    { key: 'low-sodium', text: 'Low Sodium', value: 'low-sodium' }
+    { key: 'low-carb', text: 'Low Carbs', value: 'low-carb' },
+    // { key: 'low-sodium', text: 'Low Sodium', value: 'low-sodium' }
 ]
 
 class RecipeSearch extends Component {
