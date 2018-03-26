@@ -36,18 +36,7 @@ export default class MobileContainer extends Component {
         return (
             <Responsive {...Responsive.onlyMobile}>
                 <Visibility once={false} onBottomPassed={this.showFixedMenu} onBottomPassedReverse={this.hideFixedMenu}>
-                    <Sidebar.Pushable>
-                        <Sidebar as={Menu} animation='uncover' pointing inverted color='blue' vertical visible={sidebarOpened} style={{ fontSize: '24px' }}>
-                            <Link to='/'>
-                                <Menu.Item name='recipes' active={activeItem === 'recipes'} onClick={this.handleItemClick}>Recipes</Menu.Item></Link>
-                            <Link to='/articles'>
-                                <Menu.Item name='articles' active={activeItem === 'articles'} onClick={this.handleItemClick}>Articles</Menu.Item></Link>
-                            <Link to='/videos'>
-                                <Menu.Item name='videos' active={activeItem === 'videos'} onClick={this.handleItemClick}>Videos</Menu.Item></Link>
-                        </Sidebar>
-
-                        <Sidebar.Pusher dimmed={sidebarOpened} onClick={this.handlePusherClick} style={{ minHeight: '100vh' }}>
-                            <Segment inverted color='blue' textAlign='center' vertical>
+                <Segment inverted color='blue' textAlign='center' vertical>
                                 <Container>
                                     <Menu
                                         fixed={fixed ? 'top' : null}
@@ -66,7 +55,17 @@ export default class MobileContainer extends Component {
                                     </Menu>
                                 </Container>
                             </Segment>
+                    <Sidebar.Pushable>
+                        <Sidebar as={Menu} animation='overlay' pointing inverted color='blue' vertical visible={sidebarOpened} style={{ fontSize: '24px' }}>
+                            <Link to='/'>
+                                <Menu.Item name='recipes' active={activeItem === 'recipes'} onClick={this.handleItemClick}>Recipes</Menu.Item></Link>
+                            <Link to='/articles'>
+                                <Menu.Item name='articles' active={activeItem === 'articles'} onClick={this.handleItemClick}>Articles</Menu.Item></Link>
+                            <Link to='/videos'>
+                                <Menu.Item name='videos' active={activeItem === 'videos'} onClick={this.handleItemClick}>Videos</Menu.Item></Link>
+                        </Sidebar>
 
+                        <Sidebar.Pusher dimmed={sidebarOpened} onClick={this.handlePusherClick} style={{ minHeight: '100vh' }}>
                             {children}
                         </Sidebar.Pusher>
                     </Sidebar.Pushable>

@@ -12,14 +12,22 @@ export default props => (
 
   <Router>
     <div className="App">
-      <DesktopLayout />
-      <MobileLayout />
+      <DesktopLayout>
       <Switch>
         <Route exact path="/" component={Recipe} />
         <Route exact path="/articles" component={Article} />
         <Route exact path="/videos" component={Video} />
         <Route path="/" component={Recipe} />
       </Switch>
+      </DesktopLayout>
+      <MobileLayout>
+      <Switch>
+        <Route exact path="/" component={Recipe} />
+        <Route exact path="/articles" component={Article} />
+        <Route exact path="/videos" component={Video} />
+        <Route path="/" component={Recipe} />
+      </Switch>
+      </MobileLayout>
       <Footer />
     </div>
   </Router>
