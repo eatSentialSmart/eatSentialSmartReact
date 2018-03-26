@@ -64,7 +64,7 @@ class HomeSearch extends Component {
         e.preventDefault();
         this.props.onSearchTermChange(this.state.terms)
     };
-    
+
     handleClear = (e) => {
         e.preventDefault();
         this.setState({
@@ -78,24 +78,21 @@ class HomeSearch extends Component {
     render() {
         return (
             <div>
-                <Segment >
+                <Segment attached='top'>
+                    <Header>Search For Food</Header>
+                </Segment>
+                <Segment attached='bottom'>
                     <Form>
-                        <Segment attached='top'>
-                            <Header>Search For Food</Header>
-                        </Segment>
-                        <Segment attached='bottom'>
-                            <Form.Input
-                                onChange={this.handleInputChange}
-                                value={this.state.terms.foodie}
-                                name='foodie'
-                                fluid
-                                placeholder='foodie' 
-                                required/>
-                        </Segment>
-                        <Segment attached='top'>
+                        <Form.Input
+                            onChange={this.handleInputChange}
+                            value={this.state.terms.foodie}
+                            name='foodie'
+                            fluid
+                            placeholder='foodie'
+                            required />
+                        
                             <Header>Add any dietary restrictions or needs:</Header>
-                        </Segment>
-                        <Segment attached='bottom'>
+                 
                             <Form.Group widths='equal'>
                                 <Form.Select
                                     onChange={this.handleSelect}
@@ -113,8 +110,6 @@ class HomeSearch extends Component {
                                     name='selectedDiet'
                                     placeholder='Balanced' />
                             </Form.Group>
-                        </Segment>
-
                         <Form.Group widths='equal'>
                             <Form.Button
                                 fluid

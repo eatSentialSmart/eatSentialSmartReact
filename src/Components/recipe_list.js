@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Label, Item, List, Card, Icon, Image } from 'semantic-ui-react';
+import { Item, List, Card, Icon, Image } from 'semantic-ui-react';
 
 
 const RecipeList = props => {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Segment, Form } from 'semantic-ui-react';
+import { Segment, Form, Header } from 'semantic-ui-react';
 
 
 const options = [
@@ -63,7 +63,10 @@ class ASForm extends Component {
     render() {
         return (
             <div>
-                <Segment attached>
+                <Segment attached='top'>
+                    <Header>Search For Articles</Header>
+                </Segment>
+                <Segment attached='bottom'>
                     <Form>
                         <Form.Input
                             required
@@ -71,7 +74,6 @@ class ASForm extends Component {
                             value={this.state.terms.foodie}
                             name='foodie'
                             fluid
-                            label='Search for Article'
                             placeholder='foodie' />
                         <Form.Group widths='equal'>
                             <Form.Input

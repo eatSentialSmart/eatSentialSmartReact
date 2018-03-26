@@ -1,5 +1,5 @@
 import React from 'react';
-import { Segment, Header, List } from 'semantic-ui-react';
+import { List } from 'semantic-ui-react';
 import Restaurant from './restaurant_list';
 
 const MyRestaurant = props => {

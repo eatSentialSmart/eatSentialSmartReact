@@ -1,5 +1,5 @@
 import React from 'react';
-import { Segment, Header, Item } from 'semantic-ui-react';
+import { Item } from 'semantic-ui-react';
 import RecipeList from './recipe_list';
 
 const Recipe = props => {
