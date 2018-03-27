@@ -38,13 +38,13 @@ class Video extends Component {
                 <Container>
                     <div style={styles}>
                         <Segment attached='top'>
-                            <Header>Search For Videos</Header>
+                            <Header>Search YouTube For How To Videos</Header>
                         </Segment>
                         <Segment attached='bottom'>
                             <SearchBar onSearchTermChange={term => this.videoSearch(term)} />
                         </Segment>
                     </div>
-                    <div style={ styles }>
+                    <div style={styles}>
                         <Segment attached='top'>
                             <Header>Click to Play</Header>
                         </Segment>
@@ -52,7 +52,7 @@ class Video extends Component {
                             <VideoDetail video={this.state.selectedVideo} />
                         </Segment>
                     </div>
-                    <div style={ styles }>
+                    <div style={styles}>
                         <Segment attached='top'>
                             <Header>Video Results</Header>
                         </Segment>

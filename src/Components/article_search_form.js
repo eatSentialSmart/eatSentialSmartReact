@@ -64,7 +64,7 @@ class ASForm extends Component {
         return (
             <div>
                 <Segment attached='top'>
-                    <Header>Search For Articles</Header>
+                    <Header>Search For Food Articles</Header>
                 </Segment>
                 <Segment attached='bottom'>
                     <Form>
@@ -74,7 +74,7 @@ class ASForm extends Component {
                             value={this.state.terms.foodie}
                             name='foodie'
                             fluid
-                            placeholder='foodie' />
+                            placeholder='Food' />
                         <Form.Group widths='equal'>
                             <Form.Input
                                 required
@@ -94,7 +94,7 @@ class ASForm extends Component {
                         <Form.Select
                             required
                             onChange={this.handleSelect}
-                            fluid label='Number of Article'
+                            fluid label='Number of Articles'
                             options={options}
                             value={this.state.terms.selected}
                             name='selected'
