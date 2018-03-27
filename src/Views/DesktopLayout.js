@@ -26,7 +26,7 @@ export default class DesktopContainer extends Component {
             <div>
                 <style>{`
           html, body {
-            background: #CBCBCB;
+            background: #BBDEFB;
           }
         `}</style>
 
