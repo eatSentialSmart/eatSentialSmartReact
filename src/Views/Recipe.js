@@ -6,9 +6,6 @@ import axios from 'axios';
 import RecipeSearch from '../Components/recipe_search_form';
 import RecipeResults from '../Components/recipe_results';
 
-
-// const apiRecKey = "d2cd01518cc9bb800dbf181c4c01d203";
-// const apiRecID = "da8cf82c";
 const apiRecKey = "e8b036bdd9a6347775ea2c30690c2d94";
 const apiRecID = "7cd61c30";
 

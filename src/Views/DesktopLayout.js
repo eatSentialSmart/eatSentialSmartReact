@@ -50,7 +50,7 @@ export default class DesktopContainer extends Component {
                                     <Menu.Item position='right' name='recipes' onClick={this.handleItemClick}>
                                         <Link to='/'><Image size='mini' src='/assets/img/logo.png' /></Link>
                                     </Menu.Item>
-                                    <Menu.Item header style={{ marginLeft: '-2em' }} name='recipes' onClick={this.handleItemClick}><Link to='/'>eatSentialSmart</Link></Menu.Item>
+                                    <Menu.Item header style={{ marginLeft: '-2em', }} name='recipes' onClick={this.handleItemClick}><Link to='/'>eatSentialSmart</Link></Menu.Item>
                                 </Container>
                             </Menu>
                         </Segment>
