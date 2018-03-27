@@ -4,14 +4,14 @@ import Recipe from './recipe_segment';
 import Restaurant from './restaurant_segment';
 
 const HomeResults = props => {
-    return(
+    return (
         <Grid stackable columns={2}>
             <Grid.Column>
                 <Segment attached='top'>
                     <Header>Recipe Results</Header>
                 </Segment>
                 <Segment attached='bottom'>
-                    <Recipe recipes={props.recipes}/>
+                    <Recipe recipes={props.recipes} />
                 </Segment>
             </Grid.Column>
             <Grid.Column>
@@ -23,7 +23,7 @@ const HomeResults = props => {
                 </Segment>
             </Grid.Column>
         </Grid>
-      
+
     )
 }
 

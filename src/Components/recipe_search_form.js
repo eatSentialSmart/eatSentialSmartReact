@@ -79,7 +79,7 @@ class RecipeSearch extends Component {
         return (
             <div>
                 <Segment attached='top'>
-                    <Header>Search For Food</Header>
+                    <Header>Search For Food Recipes</Header>
                 </Segment>
                 <Segment attached='bottom'>
                     <Form>
@@ -88,28 +88,28 @@ class RecipeSearch extends Component {
                             value={this.state.terms.foodie}
                             name='foodie'
                             fluid
-                            placeholder='foodie'
+                            placeholder='Food'
                             required />
-                        
-                            <Header>Add any dietary restrictions or needs:</Header>
-                 
-                            <Form.Group widths='equal'>
-                                <Form.Select
-                                    onChange={this.handleSelect}
-                                    fluid label='Health Restrictions'
-                                    options={healthOptions}
-                                    value={this.state.terms.selectedRes}
-                                    name='selectedRes'
-                                    placeholder='Low Sugar' />
-                                <Form.Select
-                                    required
-                                    onChange={this.handleSelect}
-                                    fluid label='Dietary Needs'
-                                    options={dietOptions}
-                                    value={this.state.terms.selectedDiet}
-                                    name='selectedDiet'
-                                    placeholder='Balanced' />
-                            </Form.Group>
+
+                        <Header>Add any dietary restrictions or needs:</Header>
+
+                        <Form.Group widths='equal'>
+                            <Form.Select
+                                onChange={this.handleSelect}
+                                fluid label='Health Restrictions:'
+                                options={healthOptions}
+                                value={this.state.terms.selectedRes}
+                                name='selectedRes'
+                                placeholder='Low Sugar' />
+                            <Form.Select
+                                required
+                                onChange={this.handleSelect}
+                                fluid label='Dietary Needs:'
+                                options={dietOptions}
+                                value={this.state.terms.selectedDiet}
+                                name='selectedDiet'
+                                placeholder='Balanced' />
+                        </Form.Group>
                         <Form.Group widths='equal'>
                             <Form.Button
                                 fluid
