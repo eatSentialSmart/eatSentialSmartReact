@@ -34,7 +34,7 @@ export default class MobileContainer extends Component {
         const { activeItem } = this.state
 
         return (
-            <Responsive {...Responsive.onlyMobile}>
+            <Responsive maxWidth={768}>
                 <Visibility once={false} onBottomPassed={this.showFixedMenu} onBottomPassedReverse={this.hideFixedMenu}>
                 <Segment inverted color='blue' textAlign='center' vertical>
                                 <Container>
