@@ -6,9 +6,13 @@ import {
     Image,
     Menu,
     Responsive,
-    Segment,
-    Visibility,
+    Visibility
 } from 'semantic-ui-react'
+
+const styles = {
+    height: 100,
+    fontSize: 24
+}
 
 export default class DesktopContainer extends Component {
     state = { activeItem: 'recipes' }
@@ -29,33 +33,26 @@ export default class DesktopContainer extends Component {
             background: #BBDEFB;
           }
         `}</style>
-
                 <Responsive minWidth={769}>
-                    <Visibility once={false} onBottomPassed={this.showFixedMenu} onBottomPassedReverse={this.hideFixedMenu}>
-                        <Segment inverted color='blue' textAlign='center'>
-                            <Menu
-                                fixed={fixed ? 'top' : null}
-                                inverted={!fixed}
-                                secondary={!fixed}
-                                pointing
-                                style={{ fontSize: '24px', }}
-                            >
-                                <Container>
-                                    <Link to='/'>
-                                        <Menu.Item name='recipes' active={activeItem === 'recipes'} onClick={this.handleItemClick}>Recipes</Menu.Item></Link>
-                                    <Link to='/articles'>
-                                        <Menu.Item name='articles' active={activeItem === 'articles'} onClick={this.handleItemClick}>Articles</Menu.Item></Link>
-                                    <Link to='/videos'>
-                                        <Menu.Item name='videos' active={activeItem === 'videos'} onClick={this.handleItemClick}>Videos</Menu.Item></Link>
-                                    <Menu.Item position='right' name='recipes' onClick={this.handleItemClick}>
-                                        <Link to='/'><Image size='mini' src='/assets/img/logo.png' /></Link>
-                                    </Menu.Item>
-                                    <Menu.Item header style={{ marginLeft: '-2em', }} name='recipes' onClick={this.handleItemClick}><Link to='/'>eatSentialSmart</Link></Menu.Item>
-                                </Container>
-                            </Menu>
-                        </Segment>
+                    <Visibility once={false} onBottomPassed={this.showFixedMenu} onBottomPassedReverse={this.hideFixedMenu}>            
+                        <Menu
+                            color='blue'
+                            fixed={fixed ? 'top' : null}
+                            inverted={!fixed}
+                            secondary={!fixed}
+                            pointing
+                                                  
+                        >                       
+                        <Container>
+                            <Menu.Item style={styles} as={Link} to='/' name='recipes' active={activeItem === 'recipes'} onClick={this.handleItemClick}>Recipes</Menu.Item>
+                            <Menu.Item style={styles} as={Link} to='/articles' name='articles' active={activeItem === 'articles'} onClick={this.handleItemClick}>Articles</Menu.Item>
+                            <Menu.Item style={styles} as={Link} to='/videos' name='videos' active={activeItem === 'videos'} onClick={this.handleItemClick}>Videos</Menu.Item>
+                            <Menu.Item style={styles} as={Link} to='/' position='right' name='recipes' onClick={this.handleItemClick}>
+                                <Image size='mini' src='/assets/img/logo.png' />eatSentialSmart
+                            </Menu.Item>                           
+                        </Container>                     
+                        </Menu>            
                     </Visibility>
-
                     {children}
                 </Responsive >
             </div>
