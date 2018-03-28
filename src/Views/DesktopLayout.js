@@ -30,7 +30,7 @@ export default class DesktopContainer extends Component {
           }
         `}</style>
 
-                <Responsive {...Responsive.onlyComputer}>
+                <Responsive minWidth={769}>
                     <Visibility once={false} onBottomPassed={this.showFixedMenu} onBottomPassedReverse={this.hideFixedMenu}>
                         <Segment inverted color='blue' textAlign='center'>
                             <Menu
