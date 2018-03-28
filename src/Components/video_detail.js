@@ -1,10 +1,19 @@
 
 import React from 'react';
-import { Embed, Header } from 'semantic-ui-react';
+import { Embed, Header, Image, Icon, Segment } from 'semantic-ui-react';
+import imgHolder from '../logo.svg';
 
 const VideoDetail = ({video}) => {
     if(!video) {
-        return <div>Loading...</div>
+        return (
+            <div>
+                <Icon name='film'/>
+                <p>Video will render here after search is done</p>
+                <Segment loading>
+                    <Image src={imgHolder} size='medium' centered/>
+                </Segment>
+            </div>
+        )
     }
     const videoId = video.id.videoId;
 

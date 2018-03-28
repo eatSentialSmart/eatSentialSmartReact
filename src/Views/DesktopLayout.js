@@ -10,7 +10,7 @@ import {
 } from 'semantic-ui-react'
 
 const styles = {
-    height: 60,
+    height: 100,
     fontSize: 24
 }
 
@@ -48,11 +48,8 @@ export default class DesktopContainer extends Component {
                             <Menu.Item style={styles} as={Link} to='/articles' name='articles' active={activeItem === 'articles'} onClick={this.handleItemClick}>Articles</Menu.Item>
                             <Menu.Item style={styles} as={Link} to='/videos' name='videos' active={activeItem === 'videos'} onClick={this.handleItemClick}>Videos</Menu.Item>
                             <Menu.Item style={styles} as={Link} to='/' position='right' name='recipes' onClick={this.handleItemClick}>
-                                <Image size='mini' src='/assets/img/logo.png' />
-                            </Menu.Item>
-                            <Menu.Item as={Link} to='/' header style={{ marginLeft: '-2em', }} name='recipes' onClick={this.handleItemClick}>
-                                <b style={{ fontSize: 24 }}>eatSentialSmart</b>
-                            </Menu.Item>
+                                <Image size='mini' src='/assets/img/logo.png' />eatSentialSmart
+                            </Menu.Item>                           
                         </Container>                     
                         </Menu>            
                     </Visibility>
