@@ -15,8 +15,8 @@ import {
 export default class MobileContainer extends Component {
     state = { activeItem: 'recipes' }
 
-    hideFixedMenu = () => this.setState({ fixed: false })
-    showFixedMenu = () => this.setState({ fixed: true })
+    // hideFixedMenu = () => this.setState({ fixed: false })
+    // showFixedMenu = () => this.setState({ fixed: true })
 
     handlePusherClick = () => {
         const { sidebarOpened } = this.state
@@ -35,52 +35,52 @@ export default class MobileContainer extends Component {
 
         return (
             <Responsive maxWidth={768}>
-                <Visibility once={false} onBottomPassed={this.showFixedMenu} onBottomPassedReverse={this.hideFixedMenu}>
-                    <Segment inverted color='blue' textAlign='center' vertical>
-                        <Container>
-                            <Menu
-                                fixed={fixed ? 'top' : null}
-                                inverted={!fixed}
-                                secondary={!fixed}
-                                style={{ fontSize: '24px', }}
-                            >
-                                <Menu.Item onClick={this.handleToggle}>
-                                    <Icon name='sidebar' />
-                                </Menu.Item>
-                                <Menu.Item position='right' name='recipes' onClick={this.handleItemClick}>
-                                    <Link to='/'><Image size='mini' src='/assets/img/logo.png' /></Link>
-                                </Menu.Item>
-                                <Menu.Item header style={{ marginLeft: '-2em' }} name='recipes' onClick={this.handleItemClick}><Link to='/'>eatSentialSmart</Link></Menu.Item>
-                            </Menu>
-                        </Container>
-                    </Segment>
-                    <Sidebar.Pushable>
-                        <Sidebar as={Menu} animation='overlay' pointing inverted color='blue' vertical visible={sidebarOpened} style={{ fontSize: '24px' }}>                   
-                                <Menu.Item as={Link} to='/' name='recipes' active={activeItem === 'recipes'} onClick={this.handleItemClick}>Recipes</Menu.Item>
-                                <Menu.Item as={Link} to='/articles' name='articles' active={activeItem === 'articles'} onClick={this.handleItemClick}>Articles</Menu.Item>
-                                <Menu.Item as={Link} to='/videos' name='videos' active={activeItem === 'videos'} onClick={this.handleItemClick}>Videos</Menu.Item>
-                        </Sidebar>
-                        <Sidebar.Pusher dimmed={sidebarOpened} onClick={this.handlePusherClick} style={{ minHeight: '100vh' }}>
-                            {children}
-                        </Sidebar.Pusher>
-                    </Sidebar.Pushable>
-                </Visibility>
+                {/* <Visibility once={false} onBottomPassed={this.showFixedMenu} onBottomPassedReverse={this.hideFixedMenu}> */}
+                <Segment inverted color='blue' textAlign='center' vertical>
+                    <Container>
+                        <Menu
+                            // fixed={fixed ? 'top' : null}
+                            inverted={!fixed}
+                            secondary={!fixed}
+                            style={{ fontSize: '24px', }}
+                        >
+                            <Menu.Item onClick={this.handleToggle}>
+                                <Icon name='sidebar' />
+                            </Menu.Item>
+                            <Menu.Item position='right' name='recipes' onClick={this.handleItemClick}>
+                                <Link to='/'><Image size='mini' src='/assets/img/logo.png' /></Link>
+                            </Menu.Item>
+                            <Menu.Item header style={{ marginLeft: '-2em' }} name='recipes' onClick={this.handleItemClick}><Link to='/'>eatSentialSmart</Link></Menu.Item>
+                        </Menu>
+                    </Container>
+                </Segment>
+                <Sidebar.Pushable>
+                    <Sidebar as={Menu} animation='overlay' pointing inverted color='blue' vertical visible={sidebarOpened} style={{ fontSize: '24px' }}>
+                        <Menu.Item as={Link} to='/' name='recipes' active={activeItem === 'recipes'} onClick={this.handleItemClick}>Recipes</Menu.Item>
+                        <Menu.Item as={Link} to='/articles' name='articles' active={activeItem === 'articles'} onClick={this.handleItemClick}>Articles</Menu.Item>
+                        <Menu.Item as={Link} to='/videos' name='videos' active={activeItem === 'videos'} onClick={this.handleItemClick}>Videos</Menu.Item>
+                    </Sidebar>
+                    <Sidebar.Pusher dimmed={sidebarOpened} onClick={this.handlePusherClick} style={{ minHeight: '100vh' }}>
+                        {children}
+                    </Sidebar.Pusher>
+                </Sidebar.Pushable>
+                {/* </Visibility> */}
             </Responsive>
         )
     }
 }
 
-MobileContainer.propTypes = {
-    children: PropTypes.node,
-}
+// MobileContainer.propTypes = {
+//     children: PropTypes.node,
+// }
 
-const ResponsiveContainer = ({ children }) => (
-    <div>
-        <MobileContainer>{children}</MobileContainer>
-    </div>
-)
+// const ResponsiveContainer = ({ children }) => (
+//     <div>
+//         <MobileContainer>{children}</MobileContainer>
+//     </div>
+// )
 
-ResponsiveContainer.propTypes = {
-    children: PropTypes.node,
-}
+// ResponsiveContainer.propTypes = {
+//     children: PropTypes.node,
+// }
 
