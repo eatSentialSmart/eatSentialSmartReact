@@ -20,7 +20,7 @@ class Video extends Component {
             selectedVideo: null
         };
 
-        this.videoSearch('gluten free');
+        //this.videoSearch('gluten free');
     }
 
     videoSearch(term) {
@@ -29,7 +29,7 @@ class Video extends Component {
                 videos: videos,
                 selectedVideo: videos[0]
             })
-            console.log(videos);
+           
         })
     }
     render() {

@@ -34,7 +34,7 @@ export default class MobileContainer extends Component {
         const { activeItem } = this.state
 
         return (
-            <Responsive {...Responsive.onlyMobile}>
+            <Responsive maxWidth={768}>
                 <Visibility once={false} onBottomPassed={this.showFixedMenu} onBottomPassedReverse={this.hideFixedMenu}>
                     <Segment inverted color='blue' textAlign='center' vertical>
                         <Container>
@@ -55,15 +55,11 @@ export default class MobileContainer extends Component {
                         </Container>
                     </Segment>
                     <Sidebar.Pushable>
-                        <Sidebar as={Menu} animation='overlay' pointing inverted color='blue' vertical visible={sidebarOpened} style={{ fontSize: '24px' }}>
-                            <Link to='/'>
-                                <Menu.Item name='recipes' active={activeItem === 'recipes'} onClick={this.handleItemClick}>Recipes</Menu.Item></Link>
-                            <Link to='/articles'>
-                                <Menu.Item name='articles' active={activeItem === 'articles'} onClick={this.handleItemClick}>Articles</Menu.Item></Link>
-                            <Link to='/videos'>
-                                <Menu.Item name='videos' active={activeItem === 'videos'} onClick={this.handleItemClick}>Videos</Menu.Item></Link>
+                        <Sidebar as={Menu} animation='overlay' pointing inverted color='blue' vertical visible={sidebarOpened} style={{ fontSize: '24px' }}>                   
+                                <Menu.Item as={Link} to='/' name='recipes' active={activeItem === 'recipes'} onClick={this.handleItemClick}>Recipes</Menu.Item>
+                                <Menu.Item as={Link} to='/articles' name='articles' active={activeItem === 'articles'} onClick={this.handleItemClick}>Articles</Menu.Item>
+                                <Menu.Item as={Link} to='/videos' name='videos' active={activeItem === 'videos'} onClick={this.handleItemClick}>Videos</Menu.Item>
                         </Sidebar>
-
                         <Sidebar.Pusher dimmed={sidebarOpened} onClick={this.handlePusherClick} style={{ minHeight: '100vh' }}>
                             {children}
                         </Sidebar.Pusher>
