@@ -10,7 +10,6 @@ import {
 } from 'semantic-ui-react'
 
 const styles = {
-    height: 100,
     fontSize: 24
 }
 
@@ -34,24 +33,24 @@ export default class DesktopContainer extends Component {
           }
         `}</style>
                 <Responsive minWidth={769}>
-                    <Visibility once={false} onBottomPassed={this.showFixedMenu} onBottomPassedReverse={this.hideFixedMenu}>            
+                    <Visibility once={false} onBottomPassed={this.showFixedMenu} onBottomPassedReverse={this.hideFixedMenu}>
                         <Menu
                             color='blue'
                             fixed={fixed ? 'top' : null}
                             inverted={!fixed}
                             secondary={!fixed}
                             pointing
-                                                  
-                        >                       
-                        <Container>
-                            <Menu.Item style={styles} as={Link} to='/' name='recipes' active={activeItem === 'recipes'} onClick={this.handleItemClick}>Recipes</Menu.Item>
-                            <Menu.Item style={styles} as={Link} to='/articles' name='articles' active={activeItem === 'articles'} onClick={this.handleItemClick}>Articles</Menu.Item>
-                            <Menu.Item style={styles} as={Link} to='/videos' name='videos' active={activeItem === 'videos'} onClick={this.handleItemClick}>Videos</Menu.Item>
-                            <Menu.Item style={styles} as={Link} to='/' position='right' name='recipes' onClick={this.handleItemClick}>
-                                <Image size='mini' src='/assets/img/logo.png' />eatSentialSmart
-                            </Menu.Item>                           
-                        </Container>                     
-                        </Menu>            
+                        >
+                            <Container>
+                                <Menu.Item style={styles} as={Link} to='/' name='recipes' active={activeItem === 'recipes'} onClick={this.handleItemClick}>Recipes</Menu.Item>
+                                <Menu.Item style={styles} as={Link} to='/articles' name='articles' active={activeItem === 'articles'} onClick={this.handleItemClick}>Articles</Menu.Item>
+                                <Menu.Item style={styles} as={Link} to='/videos' name='videos' active={activeItem === 'videos'} onClick={this.handleItemClick}>Videos</Menu.Item>
+                                <Menu.Item style={styles} position='right' name='recipes' onClick={this.handleItemClick}>
+                                    <Link to='/'><Image size='mini' src='/assets/img/logo.png' /></Link>
+                                </Menu.Item>
+                                <Menu.Item header style={{ marginLeft: '-2em', fontSize: '24px' }} name='recipes' onClick={this.handleItemClick}><Link to='/'>eatSentialSmart</Link></Menu.Item>
+                            </Container>
+                        </Menu>
                     </Visibility>
                     {children}
                 </Responsive >
