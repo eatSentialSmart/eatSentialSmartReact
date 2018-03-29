@@ -45,10 +45,10 @@ export default class DesktopContainer extends Component {
                                 <Menu.Item style={styles} as={Link} to='/' name='recipes' active={activeItem === 'recipes'} onClick={this.handleItemClick}>Recipes</Menu.Item>
                                 <Menu.Item style={styles} as={Link} to='/articles' name='articles' active={activeItem === 'articles'} onClick={this.handleItemClick}>Articles</Menu.Item>
                                 <Menu.Item style={styles} as={Link} to='/videos' name='videos' active={activeItem === 'videos'} onClick={this.handleItemClick}>Videos</Menu.Item>
-                                <Menu.Item style={styles} position='right' name='recipes' onClick={this.handleItemClick}>
-                                    <Link to='/'><Image size='mini' src='/assets/img/logo.png' /></Link>
+                                <Menu.Item as={Link} to='/' style={styles} position='right' name='recipes' onClick={this.handleItemClick}>
+                                    <Image size='mini' src='/assets/img/logo.png' />
                                 </Menu.Item>
-                                <Menu.Item header style={{ marginLeft: '-2em', fontSize: '24px' }} name='recipes' onClick={this.handleItemClick}><Link to='/'>eatSentialSmart</Link></Menu.Item>
+                                <Menu.Item as={Link} to='/' header style={{ marginLeft: '-2em', fontSize: '24px' }} name='recipes' onClick={this.handleItemClick}>eatSentialSmart</Menu.Item>
                             </Container>
                         </Menu>
                     </Visibility>
