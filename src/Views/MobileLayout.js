@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import {
@@ -8,15 +7,11 @@ import {
     Menu,
     Responsive,
     Segment,
-    Sidebar,
-    Visibility,
+    Sidebar
 } from 'semantic-ui-react'
 
 export default class MobileContainer extends Component {
     state = { activeItem: 'recipes' }
-
-    // hideFixedMenu = () => this.setState({ fixed: false })
-    // showFixedMenu = () => this.setState({ fixed: true })
 
     handlePusherClick = () => {
         const { sidebarOpened } = this.state
@@ -35,11 +30,9 @@ export default class MobileContainer extends Component {
 
         return (
             <Responsive maxWidth={768}>
-                {/* <Visibility once={false} onBottomPassed={this.showFixedMenu} onBottomPassedReverse={this.hideFixedMenu}> */}
                 <Segment inverted color='blue' textAlign='center' vertical>
                     <Container>
                         <Menu
-                            // fixed={fixed ? 'top' : null}
                             inverted={!fixed}
                             secondary={!fixed}
                             style={{ fontSize: '24px', }}
@@ -64,7 +57,6 @@ export default class MobileContainer extends Component {
                         {children}
                     </Sidebar.Pusher>
                 </Sidebar.Pushable>
-                {/* </Visibility> */}
             </Responsive>
         )
     }
