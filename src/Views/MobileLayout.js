@@ -64,17 +64,3 @@ export default class MobileContainer extends Component {
     }
 }
 
-// MobileContainer.propTypes = {
-//     children: PropTypes.node,
-// }
-
-// const ResponsiveContainer = ({ children }) => (
-//     <div>
-//         <MobileContainer>{children}</MobileContainer>
-//     </div>
-// )
-
-// ResponsiveContainer.propTypes = {
-//     children: PropTypes.node,
-// }
-

@@ -3,14 +3,14 @@ import React from 'react';
 import { Embed, Header, Image, Icon, Segment } from 'semantic-ui-react';
 import imgHolder from '../logo.svg';
 
-const VideoDetail = ({video}) => {
-    if(!video) {
+const VideoDetail = ({ video }) => {
+    if (!video) {
         return (
             <div>
-                <Icon name='film'/>
+                <Icon name='film' />
                 <p>Video will render here after search is done</p>
-                <Segment loading>
-                    <Image src={imgHolder} size='medium' centered/>
+                <Segment>
+                    <Image src={imgHolder} size='medium' centered />
                 </Segment>
             </div>
         )
@@ -20,7 +20,7 @@ const VideoDetail = ({video}) => {
     return (
         <div>
             <Header>{video.snippet.title}</Header>
-            <Embed 
+            <Embed
                 id={videoId}
                 placeholder={video.snippet.thumbnails.high.url}
                 source='youtube'
